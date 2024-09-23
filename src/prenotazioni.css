@@ -1,0 +1,191 @@
+body {
+	background-color: white;
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: column;
+	z-index: 0;
+}
+
+#main {
+	background-color: #EBEBEB;
+	padding: 180px 9%;
+	z-index: 1;
+}
+
+#calendario {
+	display:grid;
+	justify-content: center;
+	padding:30px 40%;
+	z-index: 2;
+	background-image: linear-gradient(90deg,rgba(235, 255, 106, 0.726),rgba(78,160,39,1.00));
+	border-radius: 50px;
+}
+
+.calendario-item-1 {
+	width: 510px;
+	font-family: fantasy;
+	color:white;
+	font-size:60px;
+	grid-row-start: 1;
+  	grid-row-end: 2;
+}
+
+.calendario-item-2 {
+	padding-left:50px;
+	padding-right:50px;
+	padding-top:25px;
+	grid-row-start: 1;
+  	grid-row-end: 2;
+}
+
+.calendario-item-3 {
+	width: 510px;
+	font-family: fantasy;
+	color:white;
+	font-size:60px;
+	grid-row-start: 1;
+  	grid-row-end: 2;
+}
+
+#tabellaTavoli table, #tabellaTavoli td, #tabellaTavoli tr {
+	border-color:rgba(0,0,0,0.00);
+	-moz-border-radius:100%;
+    -webkit-border-radius:100%;
+    border-radius:100%;
+	
+}
+
+#tabellaTavoli table {
+	border-collapse: separate;
+ 	border-spacing: 80px;
+}
+
+#tabellaTavoli td {
+	background-color: rgba(192,192,192,0.87);
+	background-image: url("img/table1.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+	
+}
+
+#tabellaTavoli td:hover {
+	-webkit-animation: tdhoven 0.3s ease-in; 
+	animation: tdhoven 0.3s ease-in;
+	background-image: url("img/table2.jpg");
+}
+
+#tabellaTavoli center{
+	padding: 20px 20px;
+	background-color: rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 50px 40px rgba(0,0,0,0.3);
+	color: white;
+}
+
+#tabellaTavoli td, #tabellaTavoli tr {
+	padding:70px;
+}
+
+@-webkit-keyframes tdhoven{
+	from { background-image: url("img/table1.jpg");}
+	to { background-image: url("img/table2.jpg");}
+}
+@keyframes tdhoven{
+	from { background-image: url("img/table1.jpg");}
+	to { background-image: url("img/table2.jpg");}
+}
+
+
+#prenotazione {
+	border: solid;
+	border-radius: 5%;
+	border-color: rgba(50,50,50,0.05);
+	border-width: thin;
+	padding: 10px;
+}
+
+#tavoloSelez{
+	border:solid;
+	border-radius: 5%;
+	border-color: rgba(0,0,0,0.3);
+	border-width: thin;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+#form_pren {
+	display: block;
+	justify-content: center;
+	width:100%;
+	padding:30px 40%;
+	z-index: 3;
+	background-image: linear-gradient(90deg,rgba(235, 255, 106, 0.726),rgba(78,160,39,1.00));
+	border-radius: 50px;
+}
+
+
+select {
+	width: 70px;
+	padding: 5px 5px;
+	margin-top: 5px;
+	border: none;
+	border-radius: 4px;
+	background-color: #f1f1f1;
+}
+
+input {
+	padding: 5px 5px;
+	margin-top: 5px;
+	border: none;
+	border-radius: 4px;
+	background-color: #f1f1f1;
+}
+
+input:focus {
+	border: 3px solid #555;
+}
+
+#prenotazioneNonEseguita{
+	width:500px;
+	padding: 9px 25px;
+	background: rgba(237,43,43,1.00);
+	color:white;
+	border: none;
+	border-radius: 50px;
+}
+
+#prenotazioneEseguita{
+	width:500px;
+	padding: 9px 25px;
+	background: rgba(78,160,39,1.00);
+	color:white;
+	border: none;
+	border-radius: 50px;
+}
+
+.tabellaTavoliStaff {
+	border-collapse: collapse;
+  	width: 100%;
+	z-index: 10;
+}
+
+.tabellaTavoliStaff td, .tabellaTavoliStaff th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+  
+.tabellaTavoliStaff tr:nth-child(even){background-color: #f2f2f2;}
+  
+.tabellaTavoliStaff tr:hover {background-color: #ddd;}
+  
+.tabellaTavoliStaff th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: rgba(78,160,39,1.00);
+	color: white;
+}
+
+#elimina {
+	background-color: red;
+}
+
