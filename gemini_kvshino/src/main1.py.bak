@@ -1,0 +1,10 @@
+from bsp import board
+from drivers import SSD1306
+import graphics
+
+display=SSD1306.SSD1306(60)
+for i in range(1,6):
+    bitmappo=graphics.gemini(i)
+    display._display_Print_Bitmap(bitmappo)
+    
+    

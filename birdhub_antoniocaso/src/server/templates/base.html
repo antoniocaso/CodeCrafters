@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <title>BirdHub</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='icon.ico') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    </head>
+    <body>
+        <section id="footer_buster">
+            <header>
+                <h1>BirdHub</h1>
+            </header>
+            <section class="picture-panel">
+                <div id="image">
+                    <img src="{{ url_for('static', filename=photo['photo_name']) }}"/>
+                </div>
+                <div id="picture-panel-buttons">
+                    <button><a href="/"><i class="material-icons">refresh</i></a></button>
+                    <button><a href="/takePhoto"><i class="material-icons">photo_camera</i></a></button>
+                </div>
+            </section>      
+            <section class="row">
+                <div class="panel">
+                    <div class="card">
+                        <p>REFILL MANAGEMENT</p>
+                        <div id="refill">
+                            
+                            <button><a href="/replenish/water"><i class="material-icons">water_drop</i></a></button>
+                            <button><a  href="/replenish/food"><i class="material-icons">lunch_dining</i></a></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="card">
+                        <div>
+                            <p>SETTINGS</p>
+                            <div id="time_settings">
+                                <form method="post" action="/setPumpTime/" class="for_input_width">
+                                    <div class="dacapo">
+                                        <input name="pump-time" type="text" placeholder="Insert desired pumping time here...">
+                                        <button type="submit"><i class="material-symbols-outlined">settings</i></button>
+                                    </div> 
+                                </form>
+                                <form method="post" action="/setAngle" class="for_input_width">
+                                    <div class="dacapo">
+                                        <input name="angle" type="text" placeholder="Insert desired angle here...">
+                                        <button type="submit"><i class="material-symbols-outlined">settings</i></button>
+                                    </div> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="row">
+                <div class="panel">
+                    <div class="card">
+                        <div><p>CALIBRATION</p>
+                            <form method="post" action="/calibrate/">
+                                <div id="calibration">
+                                        <input name="known-weight" type="text" placeholder="Known weight here...">
+                                        <button id="next_to_icon" type="submit"><i class="material-icons">scale</i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="card">
+                        <p>TARE</p>
+                        <div id="tare"><button><a href="/tare"><i class="material-symbols-outlined">tune</i></a></button></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <footer>
+                <div>Universit&agrave; degli studi di Salerno, DIEM A.A 21/22 </div>
+                <div>AMENDOLA Miriam, Battipaglia Valerio, Caso Antonio</div>
+        </footer>
+    </body>
+</html>
