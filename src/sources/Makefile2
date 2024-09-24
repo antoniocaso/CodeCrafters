@@ -1,0 +1,36 @@
+CC = /usr/bin/mpicc
+#NVCC = /usr/local/cuda-12.0/nvidia-cuda-toolkit/bin/nvcc
+NVCC = /usr/local/cuda/bin/nvcc
+FLAGS = -g
+all: clean graph.o stack.o utils.o hash.o seq_tarjan.o 
+
+test: hash.c
+	$(CC) $(FLAGS) hash.c -o test.o
+
+graph.o: graph.c
+	$(CC) $(FLAGS) graph.c -c -o graph.o
+
+stack.o: stack.c
+	$(CC) $(FLAGS) stack.c -c -o stack.o
+
+utils.o: utils.c
+	$(CC) $(FLAGS) utils.c -c -o utils.o
+
+hash.o: hash.c
+	$(CC) $(FLAGS) hash.c -c -o hash.o
+
+seq_tarjan.o: seq_tarjan.c
+	$(CC) $(FLAGS) seq_tarjan.c -c -o seq_tarjan.o
+	
+#tarjan.o: tarjan.cu
+#	$(NVCC) -g -c tarjan.cu -o tarjan.o
+
+tarjan.o: tarjan.cu
+	$(NVCC) -g tarjan.cu -o tarjan.o
+
+
+#tarjan: tarjan.o tarjan.h
+#	$(CC) tarjan.c -c -o tarjan.o
+
+clean:
+	rm -rf *.o *.out
