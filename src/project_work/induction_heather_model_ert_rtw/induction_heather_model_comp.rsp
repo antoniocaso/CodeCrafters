@@ -1,0 +1,28 @@
+-IC:/Users/miria/Desktop/Consegna\ Sistemi\ Embedded
+-IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/svd/common/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/mbed/include
+-IC:/Users/miria/Desktop/Consegna\ Sistemi\ Embedded/induction_heather_model_ert_rtw
+-IC:/Program\ Files/MATLAB/R2023a/extern/include
+-IC:/Program\ Files/MATLAB/R2023a/simulink/include
+-IC:/Program\ Files/MATLAB/R2023a/rtw/c/src
+-IC:/Program\ Files/MATLAB/R2023a/rtw/c/src/ext_mode/common
+-IC:/Program\ Files/MATLAB/R2023a/rtw/c/ert
+-IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/armcortexmbase/scheduler/include
+-IC:/Program\ Files/MATLAB/R2023a/toolbox/target/shared/armcortexmbase/xcp/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/3P.instrset/cmsis.instrset/CMSIS/Include
+-IC:/Program\ Files/MATLAB/R2023a/rtw/c/src/ext_mode/serial
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed/drivers
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed/hal
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed/hal/storage_abstraction
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed/platform
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmmbed/mbed/platform/cxxsupport
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM/TARGET_STM32F4
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM/TARGET_STM32F4/device
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/TARGET_NUCLEO_F401RE
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/TARGET_STM/TARGET_STM32F4/TARGET_STM32F401xE/device
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/include
+-IC:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/STM32F401RE/include

@@ -1,0 +1,138 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   17 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "b1s"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "b1s"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "l3s"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "l3s"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "period"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "period"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "next_level"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "next_level"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "ready"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "ready"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_c2_induction_heather_model"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_HEATER"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.HEATER"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_COOKING"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.HEATER.COOKING"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_BUTTON_2"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.INPUTS.BUTTON_2"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_PRESENCE"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.INPUTS.PRESENCE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "tp_BUTTON_1"\
+      Description  "StateTestPoint"\
+      SFName       "BUTTON_1"\
+      Path         "INDUCTION_STOVE.INPUTS.BUTTON_1"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "is_BUTTON_1"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.INPUTS.BUTTON_1"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_BUTTON_3"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.INPUTS.BUTTON_3"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_POWER_LED"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "INDUCTION_STOVE.POWER_LED"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i1"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i2"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "temporalCounter_i3"\
+      Description  "TemporalCounter"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

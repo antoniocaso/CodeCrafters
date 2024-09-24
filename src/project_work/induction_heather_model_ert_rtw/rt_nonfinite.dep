@@ -1,0 +1,20 @@
+rt_nonfinite.o: \
+ C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rt_nonfinite.c \
+ C:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/mbed_config.h \
+ C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtGetNaN.h \
+ C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rt_nonfinite.h \
+ C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtwtypes.h \
+ C:/Program\ Files/MATLAB/R2023a/extern/include/tmwtypes.h \
+ C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtGetInf.h
+
+C:/ProgramData/MATLAB/SupportPackages/R2023a/toolbox/target/supportpackages/stmnucleo/mbed/NUCLEO_F401RE/mbed_config.h:
+
+C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtGetNaN.h:
+
+C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rt_nonfinite.h:
+
+C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtwtypes.h:
+
+C:/Program\ Files/MATLAB/R2023a/extern/include/tmwtypes.h:
+
+C:/Users/miria/Desktop/CONSEG~1/induction_heather_model_ert_rtw/rtGetInf.h:
