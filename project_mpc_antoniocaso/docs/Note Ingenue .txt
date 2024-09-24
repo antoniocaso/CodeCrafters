@@ -1,0 +1,22 @@
+1. Quando la traccia chiede: "Valutare le prestazioni in termini di abbattimento del disturbo, del rumore, e banda del
+sistema a CC", vuol dire che in ordine devi calcolare:
+	a. La Wd e fare il grafico con Bode.
+	b. La Wn e fare il grafico con Bode.
+	c. Bode di F per vedere la banda passante.
+
+2. Ricorda sempre che per andare da lineare a dB fai: 20*log10(lineare)
+   Viceversa, 10^(dB/20)
+ 
+3. w3 * ts = 0.8*pi, dunque ts = 0.8*pi/w3
+   La sovraelongazione deve essere sempre minore de 10%
+
+4. kG = kC * kP
+
+5. Se viene chiesto di avere errore nullo rispetto a grafino, per qualche motivo serve PER FORZA un polo nell'origine
+AL CONTROLLORE.
+
+6. Gli effetti di una rete si fanno sentire anche ad ALTRE pulsazioni rispetto a quella usata per scegliere la rete. 
+
+7. I comandi utili sono rltool, sisotool, stairs, step, lsim(sys,u,k).
+
+8. FONDAMENTALE PER IL DISCRETO: f-1*0.2/2*180/pi dice ritardo di fase complessivo
