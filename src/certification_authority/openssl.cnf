@@ -1,0 +1,28 @@
+# OpenSSL configuration file
+
+[ca]
+default_ca = root_CA
+
+
+[root_CA]
+dir = certification_authority
+certs = $dir/certs
+crl_dir = $dir/crl
+new_certs_dir = $dir/newcerts
+database = $dir/index.txt
+serial = $dir/serial
+crlnumber = $dir/crlnumber
+private_key = $dir/private/private_key.pem
+certificate = $dir/cacert.pem
+default_md = sha256
+policy = policy_anything
+default_days  = 365
+
+[policy_anything]
+countryName		= optional
+stateOrProvinceName	= optional
+localityName		= optional
+organizationName	= optional
+organizationalUnitName	= optional
+commonName		= supplied
+emailAddress		= optional

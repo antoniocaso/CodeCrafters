@@ -1,0 +1,4 @@
+{
+    "required": ["date_of_vaccination", "name", "surname"],
+    "expiration_date": 800
+}

@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <h1>Medical Authority Server</h1>
+        <form action="{{url_for('green_pass')}}" method="post">
+            <label>User ID:</label>
+            <input type="text" name="user_id" />
+            <button type="submit">Get Green Pass</button>
+        </form>
+
+        <a href="/policy"><button type="button">Get Policy</button></a>
+    </body>
+</html>

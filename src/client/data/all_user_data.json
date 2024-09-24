@@ -1,0 +1,34 @@
+{
+    "name": ["Miriam", "R18sL0EU2zqx8pQW3a/kwIHL8mySo7koXQ36xC6Qc0g="],
+    "surname": ["Amendola", "V4MyV2ScXfQzPotSkX+5reW2xfSg9865MRMb4/lF0ew="],
+    "date_of_birth": [
+        "01/07/2000",
+        "JOR/Jr1SIeGXtr1ky0rArMLPt24Rn6YLW4adkoegjdc="
+    ],
+    "disease": ["COVID-19", "3+QmIe7jNSJf9a/wN1flUJDWSZoWbvALgi6/1+wX4gA="],
+    "vaccine_type": [
+        "RNA_Vaccine",
+        "E3nyZw4sPGo5Q8yJA+BUNMldqmREXRJOl+Qmf2MA630="
+    ],
+    "vaccine_medicinal_product": [
+        "Comirnaty",
+        "ND3Z+fNul9jiH9IDsoYgiqgqgxi3ZLvD273BSd7g4gk="
+    ],
+    "vaccine_manufacturer": [
+        "Biontech",
+        "n94leD4rHXoRkR4jLMbo+Y3upW4hEhR8Ej8+lwknoMc="
+    ],
+    "number_of_dose": ["3/3", "AnX7nRI7jqivvoVF0PkL22/n2TNXt1Wh27mutyMTPv4="],
+    "date_of_vaccination": [
+        "01/07/2023",
+        "o5zhbj+w3/f+xdGbN1VUrjNeBP+qnSQtgdqI2rnpzzk="
+    ],
+    "member_state_of_vaccination": [
+        "Italy",
+        "ew58dTzgEFRDYaODWdug5fQwFsP/3RP58Pn1twA1Hqg="
+    ],
+    "certificate_issuer": [
+        "Ministero della Salute",
+        "ClUIhJybFXL4g4zHOZQXcWnvef0ZwcuPmN4Vb88VHO4="
+    ]
+}

@@ -1,0 +1,2 @@
+V	240823144305Z		00	unknown	/C=IT/ST=Italy/L=Salerno/O=MedicalAuth/OU=MedicalAuth/CN=MA
+V	240823163254Z		01	unknown	/C=IT/ST=Italy/L=Salerno/O=SalaBingo/OU=SalaBingo/CN=SalaBingo
