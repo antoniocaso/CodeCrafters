@@ -1,0 +1,78 @@
+package controller;
+
+import drawing_software.controller.command.CopyCommand;
+import drawing_software.controller.command.Invoker;
+import drawing_software.controller.command.PasteCommand;
+import drawing_software.controller.tool.SelectionTool;
+import drawing_software.model.Drawable;
+import drawing_software.model.DrawableRectangle;
+import drawing_software.model.SelectionGrid;
+import drawing_software.view.Canvas;
+import org.junit.Before;
+import org.junit.Test;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
+public class PasteCommandTest {
+    private Canvas canvas;
+    private Invoker invoker;
+    private DataFlavor df;
+    private PasteCommand pc;
+    private DrawableRectangle dr;
+    private SelectionGrid sg;
+    private CopyCommand cc;
+    private SelectionTool selectionTool;
+
+    @Before
+    public void setUp() throws ClassNotFoundException {
+        JFrame frame = new JFrame();
+        invoker = new Invoker();
+        canvas = new Canvas(invoker);
+        frame.add(canvas);
+        pc = new PasteCommand(canvas, new Point2D.Double(42, 69));
+        df = new DataFlavor(DataFlavor.javaJVMLocalObjectMimeType + ";class=\"" + Drawable.class.getName() + "\"");
+        dr = new DrawableRectangle(Color.white, Color.cyan, 10, 10);
+        dr.setFrame(10, 10, 60, 60);
+        sg = new SelectionGrid(dr);
+        cc = new CopyCommand(canvas);
+        selectionTool = new SelectionTool(canvas, invoker);
+    }
+
+    @Test
+    public void testExecute() {
+        canvas.setSelectionGrid(new SelectionGrid(dr));
+        cc.execute();
+        pc.execute();
+        Point2D clickPoint = new Point2D.Double(82, 88);
+        MouseEvent e = new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, 1, InputEvent.BUTTON1_DOWN_MASK, (int) clickPoint.getX(), (int) clickPoint.getY(), 1, false);
+        selectionTool.mouseLeftPressed(e);
+        Drawable dr2 = canvas.getSelectionGrid().getSelectedShape();
+        Drawable dr3 = canvas.getDrawing().getDrawable(0);
+        assertEquals(dr3, dr2);
+    }
+
+    @Test
+    public void testUndo() {
+        canvas.setSelectionGrid(new SelectionGrid(dr)); // select rectangle
+        cc.execute(); // copy rectangle
+        pc.execute(); // paste rectangle
+
+        Point2D clickPoint = new Point2D.Double(82, 88);
+        MouseEvent e = new MouseEvent(canvas, MouseEvent.MOUSE_PRESSED, 1, InputEvent.BUTTON1_DOWN_MASK, (int) clickPoint.getX(), (int) clickPoint.getY(), 1, false);
+        selectionTool.mouseLeftPressed(e);
+        Drawable dr2 = canvas.getSelectionGrid().getSelectedShape(); // pasted rectangle
+
+        pc.undo();
+
+        assertFalse(canvas.getDrawing().containsDrawable(dr2));
+    }
+
+}
