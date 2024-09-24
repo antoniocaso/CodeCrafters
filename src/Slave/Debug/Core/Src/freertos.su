@@ -1,0 +1,6 @@
+../Core/Src/freertos.c:86:13:Battery_Sensor	16	static
+../Core/Src/freertos.c:116:13:Encoder	32	static
+../Core/Src/freertos.c:142:13:Temperature_Sensor	16	static
+../Core/Src/freertos.c:165:13:Communication	16	static
+../Core/Src/freertos.c:196:13:Execution	32	static
+../Core/Src/freertos.c:234:6:MX_FREERTOS_Init	32	static

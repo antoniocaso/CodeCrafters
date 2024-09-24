@@ -1,0 +1,6 @@
+../Core/Src/freertos.c:86:13:Battery_Sensor	3
+../Core/Src/freertos.c:116:13:Encoder	1
+../Core/Src/freertos.c:142:13:Temperature_Sensor	1
+../Core/Src/freertos.c:165:13:Communication	2
+../Core/Src/freertos.c:196:13:Execution	2
+../Core/Src/freertos.c:234:6:MX_FREERTOS_Init	1

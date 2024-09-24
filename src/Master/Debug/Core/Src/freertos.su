@@ -1,0 +1,7 @@
+../Core/Src/freertos.c:82:13:Ultrasound	24	static
+../Core/Src/freertos.c:128:13:Check_Danger	16	static
+../Core/Src/freertos.c:168:13:Accelerometer	16	static
+../Core/Src/freertos.c:187:13:Psx	16	static
+../Core/Src/freertos.c:219:13:Communication	16	static
+../Core/Src/freertos.c:250:13:Execution	56	static
+../Core/Src/freertos.c:296:6:MX_FREERTOS_Init	32	static
