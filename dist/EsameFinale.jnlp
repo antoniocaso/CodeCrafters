@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="EsameFinale.jnlp">
+  <information>
+    <title>EsameFinale</title>
+    <vendor>miria</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="EsameFinale.jar" size="15927" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="gruppo05.MySecretPhoneBook"  name="EsameFinale" />
+  <update check="always"/>
+</jnlp>
