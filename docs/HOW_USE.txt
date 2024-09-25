@@ -1,0 +1,2 @@
+The project must be directly imported into STM32CubeIDE. The Matlab part is simply for modeling, but to move to the practical side and actually use the application, it must be flashed via STM32CubeIDE, clearly importing not only the project but also the .cproject file, which is necessary to configure the pins.
+
