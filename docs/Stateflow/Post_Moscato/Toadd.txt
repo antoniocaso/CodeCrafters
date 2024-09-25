@@ -1,0 +1,8 @@
+nota che input 1 indica che le cose vanno bene .
+-Da discutere soglia di rientro da pericolo
+-Inserire i tre ultrasound
+-Inserire logica di controllo in caso lettura vada male
+-Da ogni stato a spento -> rimodellare la struttura grafica per migliore intuibilità
+-Fare test set ma teoricamente easy per il boss
+-Discutere sul parallelismo dei due modelli
+

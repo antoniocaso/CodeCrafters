@@ -1,0 +1,14 @@
+src/master/Debug/
+src/slave/Debug/
+src/master/.settings/language.settings.xml
+src/master/.settings/stm32cubeide.project.prefs
+src/master/master Debug.launch
+src/slave/.settings/language.settings.xml
+src/slave/.settings/stm32cubeide.project.prefs
+src/slave/slave Debug.launch
+*.o
+*.cyclo
+*.d
+*.su
+*.mk
+src/.vscode/settings.json

@@ -1,0 +1,1412 @@
+- Introduzione
+-- Problema ✔️
+--  Strumenti ✔️
+--- Polling server ✔️
+---
+- Design  ✔️
+-- Descrizione alto livello task ✔️
+-- Spiegazione processo logico 
+--- Tutti task periodici ✔️
+--- Volevamo fare un task per lettura sensori critici uno per cosa ✔️
+--- Utilizzo polling server ✔️
+--- Periodicità dei task ✔️
+--- utilizzo mutex e verbose ✔️
+--- sincronizzazione del task comunicazione e xk ✔️
+--- Sporadic non funzionava con la libreria -- aperiodici, che è megli così  ✔️
+--- divisione master slave e slave tutti periodici ✔️
+--- disable slave era task singolo ora in attuazione ✔️
+--- slave non ha la check danger, slave non puo disabilitare master (valerio 😭😭😭😭😭) ✔️
+--- Us a 1 e problemi (era 250) ✔️
+
+
+- Implementazione
+-- Spiegazione dei tempi
+-- SPiegazione di codice un poko e configurazione (preemp e time slicing)
+
+- Analisi schedulabilità (con problemino) ✔️
+-- Formulette polling server ✔️
+-- problemino con foto codice incriminato ✔️ 
+
+
+- Conclusione  
+
+
+
+
+++dire che com slave aspetta un pochino, problema è che non parte a 150 non tanto che parte WCET ✔️
+
+
+
+
+\documentclass{article}
+\title{Relazione esame System Safety Engineering}
+\author{
+    Gruppo 02 \\
+    Antonio Vitale \\
+    Federico Memoli \\
+    Antonio Caso\\
+}
+\usepackage{parskip}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+
+%\usepackage[margin=3cm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\newcommand*{\red}[1]{\textcolor{red}{#1}}
+\newcommand*{\green}[1]{\textcolor{green}{#1}}
+\newcommand*{\yellow}[1]{\textcolor{yellow}{#1}}
+\newcommand*{\bold}{\textbf}
+\usepackage{listings}
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{1.5}
+%\usepackage{imakeidx}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tcolorbox}
+
+%------------------------------------------------------------------
+
+
+\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{setspace}
+\renewcommand{\arraystretch}{1.5}
+
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{18pt}
+\newcounter{mybox}
+
+\lstset{
+mathescape,
+basicstyle=\ttfamily,
+basewidth=0.5em,
+extendedchars=\true,
+inputencoding=utf8
+}
+
+%------------------------------------------------------------------
+
+
+
+\newcommand{\infin}{\infty}
+\newcommand{\mybox}[2]{%
+  \refstepcounter{mybox}%
+  \begin{tcolorbox}[title={\themybox . #1},colback=white]
+    #2
+  \end{tcolorbox}
+}
+
+%\begin{document}
+%\maketitle
+%\vspace{-2cm}
+%\begin{center}
+%\end{center}
+%\pagebreak
+%\tableofcontents
+%\pagebreak
+
+
+\begin{document}
+%\maketitle
+\input{frontespizio.tex}
+\tableofcontents
+\newpage
+\section{Stochatical methods for steady-state availability analysis}
+  \subsection{Disponibilità stazionaria}
+    \subsubsection{Disponibilità}
+      L'availability è la misura della capacità di svolgere una specifica funzione quando necessario, in determinate circostanze, sia in un preciso momento sia dopo un periodo di tempo sufficientemente lungo, indipendentemente dal numero di guasti e riparazioni che possono verificarsi nel frattempo.
+
+      Prima di definire la disponibilità stazionaria bisogna definire i concetti di tempo medio di fallimento (mean time to failure - MTTF) e di tempo medio di riparazione (mean time to repair - MTTR).
+    \subsubsection{MTTF}
+      Il tempo medio di fallimento (MTTF) è sinonimo di tempo medio di vita di un dispositivo. Rappresenta un indice sintetico ed immediato nel definire con un unico valore la capacità di un dispositivo di funzionare. Nel mondo pratico risulta desiderabile che questo valore sia il più alto possibile. Data la sua sinteticità, risulta un parametro molto immediato da analizzare, ma presenta un contenuto informativo inferiore rispetto a funzioni come quella di reliability R(x) e unreliability F(x).
+
+      Dalla definizione del valore atteso di una variabile casuale, applicato al caso di una variabile casuale non negativa X che rappresenta il tempo di vita di un dispositivo, otteniamo il tempo medio di vita o il tempo medio di failure (MTTF)
+      
+      Il calcolo del tempo medio di vita, e di conseguenza del tempo medio di fallimento (MTTF), si ottiene riprendendo il concetto di valore atteso di una variabile casuale non negativa X che rappresenta il tempo di vita di un dispositivo:
+
+      $$average \ lifetime=MTTF= E[X]=\int_0^\infty{xf(x)dx}$$
+      Integrando per parti:
+      $$\int_0^\infty{xf(x)dx}=-\int_0^\infty{xdR(x)}=[-xR(x)]_0^\infty+\int_0^\infty{R(x)dx}$$
+      e ricordando che la la reliability R(x) ad infinito vale 0 e che un numero moltiplicato per 0 fa sempre 0, otteniamo che il tempo di vita medio e MTTF sono uguali all’integrale da 0 ad infinito sulla funzione di reliability:
+      $$average \ lifetime=MTTF= \int_0^\infty{R(x)dx}$$
+      Ovvero l’area sottesa dalla curva R(x). Ciò significa anche che due dispositivi con due funzioni di reliability diverse possono avere lo stesso MTTF. Esso quindi rappresenta il tempo medio di un dispositivo prima che si danneggi.
+  
+    \subsubsection{MTTR}
+      Un’unità riparabile è caratterizzata da tempi di funzionamento $X_i$ e tempi di inattività $Y_i$, dove , $X_i$ indica il tempo trascorso tra l'(i-1)-esima riparazione e la i-esima rottura, mentre Y$_i$ indica il tempo trascorso tra la i-esima rottura e la i-esima riparazione. Per una trattabilità del problema, i tempi di funzionamento e di inattività sono considerati indipendenti e identicamente distribuiti (i.i.d) con una rispettiva Cdf comune $F_X(t)$ e $G_Y(t)$. Quest’ultima è una misura della manutenibilità, e la sua derivata rappresenta la densità di probabilità dei tempi di riparazione $g_Y(t)=dG_Y(t)/dt$.
+
+      \red{Spiegare meglio cosa è la manutenibilità, la sua dimostrazione, e cosa si intende per densità di probabilità dei tempi di riparazione.}
+
+      Il tempo medio di riparazione (MTTR) è rappresentato dal valore medio di Y:
+      $$MTTR= E[Y]=\int_0^\infty{tg_Y(t)dt}=\int_0^\infty{(1-G_Y(t))dt}$$
+      Esso quindi rappresenta il tempo medio per la riparazione di un dispositivo.
+
+    \subsubsection{MTBF}
+      Conoscendo MTTF e MTTR, è possibile definire il valore atteso della variabile casuale di inter-rinnovo Z, ovvero il tempo medio tra guasti (mean time between failures - MTBF):
+
+      \green{Quando si introduce qualcosa di nuovo, spendere due righe per chiarire il concetto a livello puramente semantico come fatto in questo caso.}
+
+      $$MTFB=E[Z]=E[X]+E[Y]=MTTF+MTTR$$
+      Esso quindi rappresenta il tempo medio tra due danneggiamenti del dispositivo.
+
+    \subsubsection{Disponibilità istantanea}
+      L’\textit{availability} di un dispositivo (detto anche \textbf{sistema}) può essere calcolata per ogni istante di tempo t; da ciò si ottiene l’\textbf{availability istantanea}:
+
+      $$A(t)=Pr(\text{system is working at time t})$$
+
+      \red{Ok e quindi? Come la calcolo? E che me ne faccio? Si certo viene usata subito dopo, però io che ne so leggendo fino a qua}
+
+    \subsubsection{Disponibilità stazionaria}
+      La \textit{\textbf{steady-state availability}} (\textbf{disponibilità stazionaria}) $A_{SS}$ si definisce come il limite del tempo t che tende all’infinito rispetto della disponibilità istantanea:
+      $$A_{SS}=\lim_{t\rightarrow\infin}A(t)$$
+
+      Inoltre è dimostrabile che la steady-state availability è uguale a:
+      $$A_{SS}=\frac{MTTF}{MTTF+MTTR}=\frac{MTTF}{MTBF}$$
+
+      Da ciò ne consegue che per aumentare la disponibilità stazionaria di un sistema, non potendo andare a modificare i tempi medi di fallimento, è necessario andare a diminuire i tempi medi delle riparazioni.
+
+  \subsection{Analisi di affidabilità}
+    \subsubsection{Introduzione}
+      Il sistema viene modellato come una \textbf{scatola nera} avente due possibili condizioni di funzionamento, ovvero la \textbf{condizione di funzionamento e di guasto}. Questo approccio non è basato sugli stati.
+
+      \red{Quale approccio? Non si è ancora parlato di nessun approccio, la parola approccio non è ancora mai comparsa. E se non su quello, su cosa allora?}
+
+      Il sistema deve essere \textbf{decomposto} in parti che interagiscono tra di loro; la scelta  del \textbf{grado di complessità} della decomposizione delle parti, ovvero decidere se decomporre a livello di sottosistema o a livello di componente elementare, è fatta dall’analista in base al grado di approfondimento che vuole raggiungere. Dopo tale decomposizione, viene descritta la \textbf{struttura logica} del sistema, ovvero il legame tra lo stato delle parti e quello del sistema.
+
+      \green{Bellissimo questo paragrafo, top, gg allo scrittore}
+
+    \subsubsection{Reliability block diagram (RBD)}
+      Per sistemi \textbf{monotoni}, ovvero sistemi in cui:
+
+      \begin{itemize}
+        \item Ogni parte costituente del sistema può trovarsi in soli due stati: "\textbf{funzionante}" o "\textbf{guasto}".
+        \item Il \textbf{sistema stesso} può trovarsi in \textbf{soli due stati}: "funzionante" o "guasto".
+        \item Il sistema funziona certamente se \textbf{ogni sua parte funziona}.
+        \item Il sistema è certamente guasto se \textbf{ogni sua parte è guasta}.
+      \end{itemize}
+    
+      è possibile creare il \textbf{diagramma a blocchi di affidabilità} (\textbf{Reliability Block Diagram - RBD}) del sistema. Si assume che ogni componente gode di \textbf{indipendenza \red{statistica} \green{STOCASTICA}}. Il diagramma logico è composto dalle varie componenti del sistema (blocchi) collegati tra di loro, dove si assume la convenzione che un blocco funzionante permettA(!) il passaggio di corrente attraverso di esso (interruttore chiuso), cosa non possibile per un blocco guasto (interruttore aperto). La struttura del grafico quindi è composta da interruttori che in certe combinazioni di guasti causano il guasto complessivo del sistema. 
+
+      \red{Signori, usiamo il congiuntivo e non l'indicativo! PermettA, non permettE!}
+
+    
+      Un sistema ha una struttura logica di tipo \textbf{serie se funziona solo se tutte le sue parti funzionano}. Considerando due blocchi in serie A e B:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/series.png}
+        \caption{Esempio di serie.}
+      \end{figure}
+
+      Il passaggio di corrente tra le due estremità della rete è garantito solo se \textbf{entrambi gli elementi funzionan}o. Per avere l’evento di corretto funzionamento del sistema in un intervallo di tempo fisso (0, t), indicato con S, è dato dall'\textbf{intersezione degli eventi A e B} che sono gli eventi di corretto funzionamento delle sue parti A e B (\textbf{nello stesso intervallo di tempo}):
+      $$S=A\cap B$$
+      L'evento fallimento del sistema $\bar{S}$ si ottiene tramite la legge di De Morgan:
+      $$\bar S=\bar A\cup \bar B$$
+      La probabilità di occorrenza di S nell’intervallo (0,t) risulterà (valendo la stocastica indipendenza):
+      $$Pr(S)=Pr(A\cap B)=Pr(A)Pr(B)$$
+      Essendo S ed $\bar S$ mutuamente esclusivi:
+      $$Pr(\bar S)=1-Pr(S)$$
+      Un sistema ha una struttura logica di tipo parallelo se funziona solo se almeno una delle sue parti funziona. Tale sistema genera ridondanza. Considerando due blocchi in parallelo A e B:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/parallel.png}
+        \caption{Esempio di parallelo.}
+      \end{figure}
+
+      Il passaggio di corrente tra le due estremità della rete è garantito se \textbf{almeno uno degli elementi funziona}. Per avere l’evento di corretto funzionamento del sistema in un intervallo di tempo fisso (0, t), indicato con S, è l'\textbf{intersezione degli eventi A e B} che sono gli eventi di corretto funzionamento delle sue parti A e B (nello stesso intervallo di tempo):
+      $$S=A\cup B$$
+      L'evento fallimento del sistema $\bar{S}$ si ottiene tramite la legge di De Morgan:
+      $$\bar S=\bar A\cap \bar B$$
+      La probabilità di occorrenza di S nell’intervallo (0,t) risulterà (valendo la stocastica indipendenza):
+      $$Pr(S)=Pr(A\cup B)=Pr(A)+Pr(B)-Pr(A)Pr(B)$$
+      Essendo S ed $\bar S$ mutuamente esclusivi:
+      $$Pr(\bar S)=1-Pr(S)$$
+      Molto spesso si uniscono sistemi serie e parallelo per rappresentare strutture più complesse, tali sistemi si chiamano serie-parallelo.
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/mistiRBD.png}
+        \caption{Esempio di architetture miste.}
+      \end{figure}
+      Esistono altri tipi di strutture ridondanti oltre a quella parallela:
+
+      \begin{itemize}
+        \item \textbf{k-out-of-N redundancy}:il sistema è composto da N elementi in parallelo, affinché funzioni, almeno un numero fisso k ($1<k\le N$) di elementi deve essere funzionante.
+        \item \textbf{Standby Redundancy}: si mette in funzione un’unità del sistema e si mantiene un'altra unità di riserva, in grado di svolgere la stessa funzione, in condizione di standby. Quest'ultima unità entra in azione solo quando la prima fallisce. Viene molto spesso utilizzata quanto la struttura parallela non è realizzabile o eccessivamente costosa.
+      \end{itemize}
+
+      \textbf{È dimostrabile che risulta più affidabile un sistema con componenti in ridondanza rispetto a ridondare l’intero sistema}. 
+
+      Si consideri un sistema composto da due componenti in serie A e B (figura a), con rispettive affidabilità $R_A\text{ e }R_B$:
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/RBDind1.png}
+        \caption{Affidabilità per una serie.}
+      \end{figure}
+
+      Poichè è un sistema serie, risulta banale calcolarne l’\textbf{affidabilità}:
+      $$R_a=R_AR_B$$
+      Avendo disponibile una sola replica di ogni componente, è possibile produrre una \textbf{ridondanza di sistema o di componente}. Quella di sistema, ovvero di tutto l'elemento parallelo, è mostrata di seguito:
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\linewidth]{./images/RBDind2.png}
+        \caption{Ridondanza di sistema.}
+      \end{figure}
+      L’affidabilità di questo sistema si può calcolare come il parallelo di due sistemi serie AB:
+      $$R_b=2R_AR_B-(R_AR_B)^2=R_AR_B(2-R_AR_B)$$
+      Come si può notare, $R_b>R_a$.
+
+      \newpage
+      La \textbf{ridondanza di sistema} è mostrata in figura c, con affidabilità $R_c$.
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\linewidth]{./images/RBDind3.png}
+        \caption{Altro esempio di ridondanza di sistema.}
+      \end{figure}
+
+      L’affidabilità di questo sistema si può calcolare come la serie di due sistemi parallelo AA’ e BB’:
+      $$R_c=(2R_A-R_A^2)(2R_B-R_B^2)=R_AR_B[4-2(R_A+R_B)+R_AR_B]$$
+      Come si può notare, $R_c>R_a$.
+
+      Volendo, con spirito inquisitorio, eseguire il rapporto tra le affidabilità della ridondanza di componente e quella di sistema, si avrà:
+      $$\frac{R_c}{R_b}=\frac{4-2(R_A+R_B)+R_AR_B}{2-R_AR_B}=1+\frac{2(1-R_A)(1-R_B)}{2-R_AR_B}>1$$
+      Da ciò consegue che l’\textbf{affidabilità risulta maggiore a livello di ridondanza di componente rispetto a quella di sistema}.
+      Bisogna però notare che tale ridondanza è più complessa poichè, in questo caso, \textbf{ogni componente di tipo A deve essere collegato ad ogni componente di tipo B}; 
+      
+      
+      questo potrebbe richiedere della logica di controllo non considerata nei calcoli che potrebbero ridurre i vantaggi di questa configurazione. 
+
+      \red{Spiegare meglio questa frase, detta così vuol dire che fare due conti in più è un problema, ma come sappiamo per Postiglione più calcoli inutili ci sono e meglio è}
+
+      Quando le strutture logiche non sono più rappresentabili tramite sistemi serie-parallelo, non si può più applicare la condizione di monotonicità. 
+      
+      \red{E perchè? Ok che è vero, certo, però è bene non lasciare le cose per sottointese}
+      
+      Per gestire queste strutture più complesse sono nate diverse metodologie, due di questo sono quella della \textbf{probabilità condizionata} e quella della \textbf{Fault Tree Analysis} (FTA). 
+
+      \newpage
+    \subsubsection{Probabilità condizionata}
+      Tale metodo si basa sul seguente teorema:
+
+      \textbf{Legge della probabilità totale}: \textit{Siano $A_1$, $A_2$, ..., $A_N$ eventi esclusivi ed esaustivi dello spazio delle probabilità omega, e sia S un evento di omega. La probabilità dell'evento S può essere espressa come:}
+
+      $$Pr(S)Pr(S|A_1)Pr(A_1)+...+Pr(S|A_N)Pr(A_N)$$
+
+      Tale teorema permette di \textbf{scomporre un evento S in diversi eventi più semplici}, tali da essere risolvibili tramite sistemi serie-parallelo.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/probTot.png}
+        \caption{Esempio di probabilità totale.}
+      \end{figure}
+
+    \subsubsection{Fault Tree Analysis (FTA)}
+      Il \textbf{Fault Tree} è una tecnica grafica per l’analisi dell’\textbf{affidabilità} e della sicurezza di sistemi. 
+      
+      Il punto di partenza dell’albero è la condizione di questo, 
+
+      \red{Senso incomprensibile lol}
+      
+      chiamata \textbf{Top Event}, essa poi viene \textbf{scomposta in combinazioni} o sequenze di eventi che possono averla causata. La procedure si ferma quando l’evento non è più decomponibile.
+      La decomposizione avviene attraverso due simboli grafici che rappresentano le relazioni logiche di \textbf{AND e OR}. Nel primo caso, sta ad indicare che deve avvenire l’occorrenza \textbf{simultanea} degli eventi, nel secondo invece dell’\textbf{occorrenza} di uno solo degli eventi.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/fta.png}
+        \caption{Elementi fondamentali del fault tree.}
+      \end{figure}
+
+      Tale metodologia permette di identificare le cause di origine del Top Event e di effettuare valutazioni qualitative della probabilità di occorrenza.
+
+    \subsubsection{Pro}
+      \begin{itemize}
+        \item \textbf{Struttura chiara}: il RBD offre una rappresentazione visiva chiara e semplice della struttura del sistema.
+        \item \textbf{Individuazione agevole}: il RBD permette di individuare chiaramente l’elemento meno affidabile.
+        \item \textbf{Analisi retrospettiva}: il Fault Tree identifica efficacemente le possibili cause di guasto.
+        \item \textbf{Analisi qualitativa e quantitativa}: il Fault Tree fornisce un’analisi sia qualitativa che quantitativa delle cause di guasto.
+        \item \textbf{Flessibilità}: la probabilità condizionata permette di modellare scenari più complessi rispetto ai semplici schemi serie-parallelo degli RBD, fornendo una valutazione più realistica.
+      \end{itemize}
+
+    \subsubsection{Contro}
+      \begin{itemize}
+        \item \textbf{Eccessiva semplificazione}: il RBD rappresenta sistemi semplici, assumendo che i guasti siano indipendenti. Viene utilizzato per componenti semplici, risulta inadeguanto per componenti più complessi. 
+        \item \textbf{Complessità rappresentativa}: il Fault Tree può risultare molto oneroso se applicato dettagliatamente, invece di considerare gli eventi più rappresentativi.
+        \item \textbf{Complessità comparativa}: il Fault Tree rende difficile catturare cause comuni di fallimento, [...]
+        \item \textbf{Irreversibilità dei guasti}: queste tecniche sono utilizzate in caso le componenti del sottosistema da modellare sono non-riparabili, ovvero se possono trovarsi solo in 2 stati, funzionante o guasto.
+      \end{itemize}
+
+      \red{Dare un accenno di spiegazione sulla complessità comparativa, continuando la frase con ", ovvero"}
+
+  \subsection{Catene Markoviane}
+    Le catene Markoviane sono utilizzate per modellare transizioni di stato in sistemi dinamici dove i tempi di riparazione non sono trascurabili. Questi modelli sono cruciali per valutare la disponibilità stazionaria attraverso le probabilità di transizione tra gli stati.
+
+    \subsubsection{DTMC}
+      Sono casi speciali di processi Markoviani in tempo discreto e numero di stati numerabile (DTMC). Un processo Markoviano è un processo stocastico che soddisfa la proprietà di Markov:
+      $$Pr\{X(t_{n+1})=j|X(t_{n})=i, H(t_{n-1})\}=Pr\{X(t_{n+1})=j|X(t_{n})=i)\}=p_{i,j}(t_n)$$
+      Ovvero la probabilità di passare dallo stato $i$ allo stato $j$ è data \textbf{solo dalla probabilità di trovarsi nello stato $i$ e dalla probabilità della transizione da $i$ a $j$} e non dalla storia di transizioni passate che hanno portato ad $i$. Quindi un processo di Markov è memoryless, senza memoria, questo rende molto semplice l’analisi dell’affidabilità del sistema perché bisogna occuparsi solo di due cose:
+
+      \green{Ottima idea spiegare le formule in questo modo, facendo vedere che non le si ricopia e basta ma che si è capito il senso dietro.}
+      \begin{itemize}
+        \item probabilità di stare nello stato i 
+        \item la probabilità di transizione allo stato $j$ partendo da $i$. 
+      \end{itemize}
+      In un processo di Markov il \textbf{futuro è condizionatamente indipendente dal passato dato il presente}. Un’ulteriore semplificazione che si può avere è se le probabilità di transizione sono costanti nel tempo, perdendo dunque la dipendenza da quest'ultimo:
+      $$Pr\{X(t_{n+1})=j|X(t_{n})=i\}=p_{i,j}$$
+      In questo caso il processo è chiamato catena di Markov omogenea e rappresenta il modello probabilistico più semplice per un sistema riparabile con tempi di riparazione non trascurabili.
+
+      Una catena di Markov omogenea è completamente definita dalla cosiddetta matrice di transizione P, che \textbf{raccoglie tutte le probabilità di transizione} dallo stato $i$ (identificato dall'indice di riga) allo stato $j$ (identificato dall'indice di colonna). P è una matrice quadrata con elementi non negativi ed è una matrice stocastica, ovvero la somma dei termini di ogni riga è uguale a 1.
+
+      \green{Questi "ovvero" per spiegare tutti i fatti sono proprio al bacio, veramente top, spiegano appena si presenta il dubbio}
+
+      La matrice di transizione \textbf{P se moltiplicata per se stessa un numero $n$ di volte va a definire la matrice con le probabilità di stato} al tempo $t_n$.
+
+      Questo implica che la relazione tra le probabilità al tempo $t_n$ e $t_{n+1}$ (in caso di processo a due stati) è:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/mat1.png}
+        \caption{???.}
+      \end{figure}
+
+      \red{Bisogna spiegare l'equazione nel senso di spiegare prima i vari elementi che la compongono e poi spiegare cosa vuol dire tutta insieme. Ok, si, non ci vuole molto a capire cosa vuol dire e certamente postiglione lo sa perfettamente cosa è, però cmq è una formula lanciata senza un contesto. Oltretutto noi poco sopra abbiamo detto che la matrice di transizione "MOLTIPLICATA PER SE STESSA" quindi questo "se stesso" si dovrebbe mettere in evidenza}
+
+      Questa relazione vale in ogni istante, quindi anche per lo steady state (ovvero all'infinito), infatti si avrà:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/mat2.png}
+        \caption{???.}
+      \end{figure}
+
+      In questo sistema, una delle equazioni è linearmente dipendente dall’altra ma può essere rimpiazzata dall’equazione di vincolo tra probabilità di stato $P_1(t_n)+P_2(t_n)=1$, che deve valere per ogni $t_n$.
+
+      Si possono anche analizzare i \textbf{tempi di soggiorno} del sistema in uno stato, ovvero \textbf{il tempo che passa il sistema dall’entrata all’uscita di uno stato}; i tempi di soggiorno sono variabili aleatorie Geometriche, T~Geo(p), con media $1/p$ e varianza $(1-p)/p^2$, dove p è la probabilità di transizione in un altro stato. Ad esempio nel caso di 2 stati (funzionante e guasto), si avrà:
+      
+      \red{Vogliamo metterle le dimostrazioni per le Geometriche? Credo gli farebbe piacere vedere che uno si prende gli appunti di quello che dice, gli piace quando gli si alliscia il pelo}
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/geo1.png}
+        \caption{Esempio di descrizione di due tempi di transizione come due variabili geometriche.}
+      \end{figure}
+
+    \subsubsection{CTMC}
+      Le assunzioni e relazioni fatte per il tempo discreto valgono anche se si considera un intervallo di tempo infinitesimale $dt$, rendendo quindi il tempo continuo: si ottengono così le CTMC.
+
+      \red{Cosa vuol dire "rendere il tempo continuo"? Una roba tipo Dr Strange? Spiegare meglio il contesto "temporale" delle catene markoviane.}
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/ctmc1.png}
+        \caption{Probabilità di transire in un certo stato dato lo stato attuale.}
+      \end{figure}
+
+      \red{Introdurre prima i tassi di transizione. Spiegarli "a parole" prima anche. Spiegare come si passa, matematicamente e algebricamente, dalla prima riga alla seconda. Dopo averlo fatto, spiegare il senso semantico delle due equazioni.}
+
+      I tassi di transizione $q_{i,j}$ sono:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\linewidth]{./images/ctmc2.png}
+        \caption{Definizione del tasso di transizione.}
+      \end{figure}
+
+
+      Se i tassi di transizione sono costanti nel tempo (ipotesi di \textbf{stazionarietà}), la CTMC è una CTMC \textbf{omogenea}, simile alla DTMC che abbiamo studiato in precedenza.\red{Abbiamo chi? Postiglione mentre legge fa parte delle persone che hanno studiato? E in precedenza quando? Evitare sempre qualsiasi persona verbale e lasciare il più possibile sull'impersonale.} Nel caso di sistemi a due stati (funzionante, stato 1, e guasto, stato 2) ci sono solo \red{2} \green{due} tassi di transizione:
+
+      \red{Evitare di usare "2" un attimo prima e "due" dopo}
+
+      \begin{itemize}
+        \item $\lambda$ è il tasso di guasto, rappresentato dall’arco che va dallo stato 1 allo stato 2, $q_{12}$
+        \item $\mu$ è il tasso di riparazione, rappresentato dall’arco che va dallo stato 2 allo stato 1, $q_{21}$
+      \end{itemize}
+
+      Mentre la probabilità di restare nello stato corrente è il complementare del tasso relativo all’arco uscente da quello stato.
+      
+      \red{Questa frase non ha senso in italiano... e tra l'altro mentre quello, che cosa?}
+
+      La matrice di transizione, in caso di due stati, diventa:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/ctmc3.png}
+        \caption{Matrice di transizione nel caso di CTMC omogenea.}
+      \end{figure}
+
+      \red{Siccome questa matrice qua è molto importante, consiglierei di RI-spiegare i suoi elementi e spiegarla nel complesso, del tipo perchè ci sta 1-? Si certo chiaramente noi lo sappiamo perché e non c'è bisogno dello scienziato per capirlo, è vero, e certamente non serve a postiglione capire questa cosa, però almeno per esperienza personale postiglione apprezza molto questo tipo di spiegazioni, e se non mi credete chiedete a Miriam come gli disse postiglione in merito alla relazione che facemmo. Però chiaramente in ogni caso se non avete voglia e vi scocciate lasciate così eh figuratevi, fate vobis voi sapete è il vostro lavoro non mi permetto di modificarlo io}
+
+      Il sistema corrispondente alla CTMC modellata è rappresentabile come segue:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/ctmc4.png}
+        \caption{Rappresentazione di una catena a due stati.}
+      \end{figure}
+
+      Applicando le corrispondenti equazioni nel tempo continuo similmente a come è stato fatto nel tempo discreto per il calcolo delle probabilità di essere in un dato stato $i$ al tempo $t$ si ha il seguente sistema:
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{./images/ctmc5.png}
+        \caption{Rappresentazione di una catena a due stati.}
+      \end{figure}
+
+      che genera un \textbf{sistema di equazioni differenziali che hanno le seguenti soluzioni}, utilizzando la trasformata di Laplace e date le condizioni iniziali ($P_1(0)=1$ e $P_2(0)=0$) 
+
+      \red{Anche qua, se ci sono i passaggi matematici è meglio metterli, soprattutto coi sistemi postigline esce pazzo}
+
+      $$P_1(t)=\frac{\mu}{\lambda+\mu}+\frac{\lambda}{\lambda+\mu}\exp[-(\lambda+\mu)t]$$
+      $$P_2(t)=\frac{\lambda}{\lambda+\mu}-\frac{\lambda}{\lambda+\mu}\exp[-(\lambda+\mu)t]$$
+
+      Come si può notare, hanno una parte esponenziale che per \textbf{t infinito tende a 0, rendendo la probabilità steady state dipendente solo da $\lambda$ e $\mu$}.
+
+      $$P_1(\infty)=\frac{\mu}{\lambda+\mu}$$
+      $$P_2(\infty)=\frac{\lambda}{\lambda+\mu}$$
+      La \textbf{distribuzione limite} \red{spiegare cosa è in quanto prima non la si è chiamata così} di una CTMC può essere calcolata in modo simile a come si farebbe per una DTMC, usando il seguente sistema di equazioni lineari e sostituendo un’equazione con la proprietà fondamentale della probabilità (la somma deve essere 1).
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{./images/ctmc6.png}
+        \caption{Distribuzione limite nel caso CTMC.}
+      \end{figure}
+
+      Questa procedura è utilizzabile anche in caso di un \textbf{sistema a più stati} (MSS), perché evita di risolvere un sistema di equazioni differenziali con tante equazioni quanti sono gli stati, ma si ha piuttosto un sistema di equazioni lineari.
+
+      \red{Questa frase qua sopra implica che una equazione differenziale non possa esseer lineare, cosa che chiaramente è falsa (così mi pare, google così dice), quindi riformularla e spiegarla meglio}.
+
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{./images/ctmc7.png}
+        \caption{Sistema a più stati.}
+      \end{figure}
+
+      Dove P è la matrice di transizione. Si può, inoltre, usare la matrice \textbf{A}  per il calcolo della distribuzione limite:
+
+      \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{./images/ctmc8.png}
+        \caption{Distribuzione limite del sistema a più stati.}
+      \end{figure}
+
+      Dove $\bold{A}=(\bold{P}-\bold{I})/dt$ è la matrice dei tassi di transizione, chiamata anche \textbf{matrice generatrice infinitesimale}.
+
+      \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/ctmc9.png}
+        \caption{Definizione di A.}
+      \end{figure}
+    
+      Per le \textbf{CTMC il tempo di soggiorno} in uno stato (funzionante o guasto) è una variabile aleatoria \textbf{Esponenziale con parametro} $\lambda$ per $T_G$ e $\mu$ per $T_R$. Questo risultato è ottenibile dal \textbf{calcolo della probabilità di essere in uno stato $i$},
+
+      \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.6\linewidth]{./images/ctmc10.png}
+        \caption{???.}
+      \end{figure}
+
+      \red{Questa formula è il calcolo della probabilità di essere in uno stato i? O.O Spiegare molto meglio questa formula, termine per termine e poi tutta assieme.}
+
+      Dove $T_G$ è il tempo di soggiorno nello stato 1 (funzionante), quindi $T_G$ è il tempo al guasto. Consideriamo un intervallo di tempo $(0,w)$ diviso in $m$ intervalli di tempo $\Delta$ abbastanza piccoli da poter approssimare una CTMC ad una DTMC.
+
+      $$\Pr{\{w<T_G\le w+\Delta\}} \cong \Pr{\{T_G=(m+1)\Delta\}} = (1-q_{12}\Delta)^mq_{12}\Delta$$
+
+      \red{Spiegare le formule uagliu, tipo qua dire "la probabilità che il tempo al guasto sia compreso nell'intervallo elementare a partire da un certo istante di tempo w è data da..."}
+
+      Considerando $\Delta=w/m$ e osservando che $\Delta \to 0$ implica $m\to\infty$ e che $q_{12}\equiv\lambda$, si ha
+
+      \red{Spiegare quell' "implica"}.
+
+      \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.9\linewidth]{./images/ctmc12.png}
+        \caption{???.}
+      \end{figure}
+
+      \red{Qui ad esempio non c'è bisogno di spiegare perché si sarà già spiegato prima la semantica dell'equazione e del risultato.}
+
+      Il tempo di soggiorno nello stato di funzionamento corrisponde al MTTF, mentre quello nello stato di riparazione corrisponde al MTTR.
+      $$MTTF=E[T_G]=1/\lambda$$
+      $$MTTR=E[T_R]=1/\mu$$
+
+      \red{Perché corrispondono, chi me lo dice? E se ci sono dimostrazioni è meglio metterle.}
+
+    \subsubsection{Pro}
+      \begin{itemize}
+        \item \textbf{Modellazione dinamica}: le catene Markoviane catturano efficacemente le dinamiche evolutive del sistema. \red{Sembra na supercazzola, spiegare meglio cosa si intende.}
+        \item \textbf{Rappresentazione semplice}: le catene Markoviane sono facilmente rappresentabili attraverso il diagramma dello spazio degli stati.
+      \end{itemize}
+    \subsubsection{Contro}
+      \begin{itemize}
+        \item \textbf{Complessità crescente}: la complessità aumenta con il numero di stati e le transizioni da modellare.
+        \item \textbf{Approccio monolitico}: questo tipo di approccio porta ad una esplosione degli stati per sistemi del mondo reale. \red{Spiegare meglio questo concetto.}
+      \end{itemize}
+
+
+  \subsection{Reti di Petri Stocastiche}
+    Le reti di Petri stocastiche sono un'estensione delle reti di Petri tradizionali, integrate con \textbf{aspetti probabilistici}. Sono utilizzate per modellare sistemi in cui la disponibilità è influenzata da fattori casuali.
+
+    Una Petri Network è un grafo diretto bipartito i cui nodi sono divisi in due insiemi disgiunti chiamati posti e transizioni collegati da archi. Un posto può contenere uno o più token che specificano una determinata "condizione" in cui si trova il sistema. Una \textbf{marcatura di una PN è un vettore che elenca il numero di token nelle posizioni della PN}. L'attivazione di una transizione è un'azione atomica in cui un token viene rimosso da ogni punto di input della transizione e \textbf{un token viene aggiunto a ciascun punto di output della transizione}, con il risultato di una nuova marcatura della PN. A differenza delle PN classiche, le Stochastic Perti Network incorporano un meccanismo di temporizzazione stocastica associato alle transizioni.
+  
+    Formalmente \textbf{una SPN è una sestupla} (P, T, I, O, M, L):
+    \begin{itemize}
+      \item \textbf{P} è l'insieme di np posti. \red{np??}
+      \item \textbf{T} è l'insieme di nt transizioni. \red{nt??}
+      \item \textbf{I} sono le relazioni di transizioni di input. 
+      \item \textbf{O} sono le relazioni di transizioni di output.
+      \item \textbf{M} è la marcatura iniziale.
+      \item \textbf{L} è l’insieme di N numeri reali non negativi che rappresentano le \textbf{frequenze di attivazione delle variabili casuali distribuite in modo esponenziale} associate a ciascuna transizione PN. \red{Porla in maniera un poco piu chiara, tipo "dal momento che ad ogni transizione è associata una variabile casuale distribuita esponenzialmente, ad ogni v.a è associata una frequenza di attivazione, OVVERO (e si spiega cosa è una frequenza di attivazione)}
+    \end{itemize}
+      \subsubsection{Tipologie e caratteristiche}
+        Se una PN ha transizioni sia temporizzate che immediate si parla di Generalized SPN (GSPN); le \textbf{transizioni immediate} sono utili per modellare il verificarsi di quegli eventi che obbediscono a una certa logica. Se una marcatura è abilitata da una transizione \textbf{immediata} è detta \textbf{vanishing} altrimenti è detta \textbf{tangible}.
+
+        \red{Cosa è una transizione temporizzata? E cosa è una immediata? Non si è detto.}
+        \red{Stanto a quanto detto, sembra che si voglia dire che le transizioni non immediate non sono utili per modellare eventi che seguono una logica. }
+        \red{Cosa vuol dire abilitare una transizione? Se si usa un verbo diverso bisogna spiegarlo.}
+
+        Per il calcolo dell’affidabilità bisogna usare un’ulteriore evoluzione delle PN, ovvero le Stochastic Reward Network, dove sono \textbf{aggiunte componenti} alla rete quali \textbf{funzioni di guardia}, \textbf{cardinalità variabile di un arco}, \textbf{dipendenza di una marcatura} e ad ogni \textbf{marcatura tangible è associata un valore di una funzione di reward}, un esempio è
+
+        \red{1. Cosa è una funzione di guarda? 2. Cosa è la cardinalità variabile di un arco? 3. Che significa la "dipendenza di una marcatura"? Quale, e da chi?}
+
+        $$X(t) =
+        \begin{cases}
+            1 & \text{se il sistema è funzionante} \\
+            0 & \text{altrimenti}
+        \end{cases}$$
+
+        L’affidabilità è calcolata come il valore atteso del reward per tempo infinito:
+        \red{Cosa è questo ente metafisico indefinito chiamato "reward"?? Si mangia??}
+        $$E[X]=\sum _i r_i\pi_i$$
+
+        dove $r_i$ è il reward della marcatura $i$ e $\pi_i$ è la probabilità a \textbf{Steady State} di trovarsi nella marcatura $i$.
+
+        Di seguito degli esempi di Reti di Petri e di loro rappresentazioni:
+
+        \begin{figure}[!h]
+          \centering
+          \includegraphics[width=0.3\linewidth]{./images/pn1.png}
+          \caption{Rete di Petri.}
+        \end{figure}
+
+        \begin{figure}[!h]
+          \centering
+          \includegraphics[width=0.5\linewidth]{./images/pn2.png}
+          \caption{Rete di Petri stocastica (presenza di tasso di fallimento associato a marcatura).}
+        \end{figure}
+
+        \red{Se le reti di petri non c'è bisogno di spiegarle in quanto non parte del corso, qua però bisogna spiegare che vuol dire quel \#up, non lo si può mica buttare così e chi si è visto si è visto... bisogna spiegare le foto che si mettono, pure le virgole vanno giustificate.}
+
+        \begin{figure}[!h]
+          \centering
+          \includegraphics[width=0.5\linewidth]{./images/pn3.png}
+          \caption{Esempio completo di Rete di Petri Stocastica.}
+        \end{figure}
+
+        \begin{figure}[!h]
+          \centering
+          \includegraphics[width=0.5\linewidth]{./images/pn4.png}
+          \caption{Rete di Reward Stocastica con funzione di Reward.}
+        \end{figure}
+        
+        \red{Qua ci sta una grande domanda per qualcosa di assolutamente non detto: io qua vedo di nuovo \#up, e pure prima ci stava \#up, e perché questa qua si chiama REWARD NET e quella di prima no? Questa è quasi una domanda d'esame proprio. }
+
+      \subsubsection{Pro}
+        \begin{itemize}
+          \item \textbf{Modellazione avanzata}: le reti di Petri stocastiche e le SRN consentono una modellazione avanzata di sistemi complessi.
+          \item \textbf{Interfaccia ad alto livello}: le reti di Petri forniscono una interfaccia ad alto livello che nasconde i dettagli tecnici.
+          \item \textbf{Virtualizzazione negli stati}: una PN, anche semplice, può rappresentare moltissimi stati a seconda del numero di possibili marcature, cosa che avrebbe reso impraticabile l’utilizzo delle catene markoviane, la quale avrebbe sofferto di un’esplosione degli stati.
+          \red{A cosa è dovuta questa differenza? A un motivo puramente grafico, visivo?}
+        \end{itemize}
+      \subsubsection{Contro}
+        \begin{itemize}
+          \item \textbf{Complessità computazionale}: la valutazione può richiedere risorse computazionali significative.
+          \item \textbf{Difficoltà di approfondiment}o: si ha difficoltà ad accedere alla distribuzione sottostante degli stati. \red{Spiegare meglio.}
+          \item \textbf{Complessità negli stati}: difficoltà ad accedere alla distribuzione dello stato sottostante, estrarre il grafo di raggiungibilità da una PN, anche semplice, può portare alla creazione di tantissimi stati a seconda del numero di possibili marcature.
+          \item \textbf{Interpretazione complessa}: l'interpretazione dei risultati può essere più complessa rispetto a modelli più semplici.
+        \end{itemize}
+
+
+\newpage
+\section{Analisi}
+  \subsection{Introduzione}
+  Nei contesti critici legati alla sicurezza, l'implementazione di sistemi di comunicazione altamente adattabili e pronti a essere tempestivamente riconfigurati in
+   situazioni di emergenza o altre eventualità riveste un ruolo di estrema importanza. Le architetture che si basano su Service Function Chain (SFC),
+    costituite da reti di nodi virtualizzati collegati in modo sequenziale, emergono come una soluzione fondamentale per la creazione di tali sistemi.
+    Si consideri lo scenario dove una o più stazioni di monitoraggio, per motivi di emergenza, necessitano di una rete velocemente riconfigurabile per il
+    trasferimento di dati ad una centrale operativa, la quale li elaborerà. L'utilizzo di un nodo di rete SFC risulta consono per connettere le stazioni di
+     monitoraggio con il centro di elaborazione.
+  \subsection{Sistemi in analisi}
+  La rete risulta formata da tre sistemi connessi in serie, $S_1,S_2,S_3$:
+
+  Il primo sistema, denominato $S_1$, la stazione di monitoraggio, è progettato con un approccio fault-tolerant, composto da due sottosistemi interconnessi,
+   composti essi stessi da due componeneti, un sensore ed un elemento di storage. Un sottosistema per funzionare necessita del funzionamento di entrambe le componeneti,
+    per il sistema invece almeno uno dei due sottosistema deve risultare funzionante.
+  
+  Il secondo sistema, denominato $S_2$, il nodo di rete SFC, può essere configurato come ridondante in modalità attivo-attivo, è realizzato da un modello a 5 layers, composto 
+  rispettivamente (partendo dal livello più alto e come mostrato in figura) da: 3 container , 1 docker, 1 virtual machine, 1 hypervisor e 1 hardware. Per il corretto funzionamento è necessario il 
+  funzionamento di almeno 1 container e degli altri layers.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=4cm]{modello_S2.png} 
+    \caption{Modello del sistema $S_2$}
+  \end{figure}
+
+  Il terzo sistema, denominato $S_3$, è composto da uno o più elaboratori configurati in modalità attivo-attivo, se necessario. Ogni elaboratore è composto da 5 componeneti: una CPU,
+   elemento di storage, un software di analisi dei dati (App), un sistema operativo (SO) ed una componente hardware (HW). Un elaboratore si definisce guasto quando uno dei suoi componenti
+   è guasto, il sistema risulta funzionante quando almeno un elaboratore non è guasto.
+  \subsection{Obiettivi progettuali}
+    L'attività progettuale richiede il soddisfacimento di diversi requisiti:
+    \begin{enumerate}[label=\textbf{\arabic*.}, start=1]
+      \item Definire il modello di disponibilità del sistema $S_1$, basato su un Fault Tree con modelli CTMC per i componenti e valutazione della disponibilità stazionaria.
+      \item Definire il modello di disponibilità del sistema $S_2$, rappresentato tramite Stochastic Reward nets e calcolo della disponibilità stazionaria.
+      \item Definire il modello di disponibilità del sistema $S_3$, modellato tramite Reliability Block Diagram e valutazione della disponibilità stazionaria.
+      \item Condurre la stima a massima verosimiglianza dei tassi di guasto $\lambda_{PHY}$ e di riparazione $\mu_{PHY}$ per il componente hardware (PHY) del
+       singolo nodo SFC, basandosi sui dati forniti nei file "repairs", "failures" e "censoring". Nel dettaglio, il file "repairs" comprende un campione completo
+        dei tempi di riparazione, mentre il file "failures" contiene un campione censurato (tramite time censoring) dei tempi di guasto. Il terzo file, denominato "censoring",
+         indica con il valore "1" i dati censurati relativi ai tempi di guasto. I tempi di guasto e di riparazione sono da considerarsi esponenziali per il componente.
+      \item Individuazione della configurazione con ridondanza della rete formata dai 3 sistemi $S_1-S_2-S_3$, tale da minimizzare il costo totale $C_{tot}$ e garantire una disponibilità
+       stazionaria almeno pari a $A_0 = 0.999999$ (nota come "six nines"). I costi (normalizzati) dei singoli sistemi sono $c_1 = 0.2$, $c_2 = 0.8$, $c_3 = 1$, rispettivamente.
+        Per ridondanza di un sistema si intende la replicazione dell'intero sistema $S_1$, $S_2$, o $S_3$.
+      \item Effettuare l'analisi di sensitività al variare dei valori del parametro $\lambda_{DCK}$ e $\mu_{DCK}$, fissata la configurazione con elementi ridondanti della rete, ed individuando il valore critico
+       $\lambda_{DCK}^*$ e $\mu_{DCK}^*$, tali che il valore di disponibilità si riduce al di sotto dei six-nines.
+    \end{enumerate}
+  \subsection{Procedura di stima a massima verosimiglianza}
+  Prima di procedere alla definizione dei modelli di disponibilità dei tre sistemi, si procede con la stima a massima verosimiglianza dei parametri $\lambda_{PHY}$ e $\mu_{PHY}$. 
+  Tale scelta è stata fatta per poter avere prima disponibili tutti i parametri necessari per il calcolo della disponibilità stazionaria di ognuno dei 3 sistemi.
+  Poiché il campione dei tempi di guasto è censurato (time censoring), sono necessari degli strumenti che sono di seguito presentati.
+    \subsubsection{Procedure di stima del tempo di vita}
+    Esistono diversi approcci per la stima del tempo di vita di una componente di un sistema e si dividono in:
+    \begin{enumerate}[label=\textbf{\arabic*.}, start=1]
+      \item approcci parametrici
+      \item approcci non parametrici
+    \end{enumerate}
+    Le strategie non parametriche sono quelle in cui non assumiamo un modello di probabilità specifico per il fenomeno osservato. Ad esempio, le metriche di affidabilità sono stimate direttamente dai dati raccolti durante gli esperimenti, senza utilizzare altre informazioni oltre alle osservazioni sperimentali.
+
+    Nel caso di strategie parametriche, invece, si assume un modello distributivo (basato su considerazioni teoriche o di esperienza pregressa) per la funzione di inaffidabilità $F(x)$, i cui parametri sono incogniti. Pertanto, stimiamo il valore di questi parametri in base ai dati disponibili (ad esempio, i tempi di missione).
+
+    Gli approcci parametrici di solito richiedono tecniche più complesse rispetto a quelli non parametrici. Tuttavia, hanno il vantaggio di fornire valutazioni più precise a parità di dimensione dei dati, se il modello teorico ipotizzato per la variabile aleatoria è adeguato alla situazione in analisi. Sono disponibili diverse tecniche per le procedure di stima parametrica, sia analitiche (Minimi Quadrati, Massima Verosimiglianza) che grafiche (Probability Plots).
+
+    \subsubsection{Tipologie di dati per valutazioni di affidabilità}
+    Per stimare i parametri che caratterizzano un fenomeno aleatorio, vengono raccolte misurazioni ripetute di tale fenomeno. Tipicamente, le osservazioni sperimentali rappresentano i valori di una variabile casuale associata a individui scelti casualmente estratti dalla popolazione che modella il fenomeno. Le misurazioni rilevanti per le valutazioni dell'affidabilità sono principalmente test di durabilità che raccolgono i tempi di guasto. Nel caso di un'unità non riparabile, è ovvio che devono essere utilizzate più unità dello stesso tipo per osservare tempi diversi di guasto.
+
+    I dati raccolti possono essere completi o censurati, ovvero sono disponibili solo una parte dei dati desiderati, si hanno, quindi, informazioni parziali. La censura è definita dal lato del dato non limitato, ovvero una censura a destra vuol dire che quel dato aleatorio reale sarà maggiore del dato censurato, ma non minore.
+
+    \subsubsection{Censure}
+    La censura (a destra) può essere di 2 tipi:
+
+\begin{itemize}
+  \item \textbf{Tipo I}, nota anche come censura temporale, è una forma di censura a destra in cui la durata del test per ciascuna unità del campione non può superare una quantità fissa $\tau$, e i campioni che non hanno mostrato guasti fino a $\tau$ saranno ancora funzionanti al termine dell’esperimento.
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=4cm]{censura_I.png} % Sostituisci 'path/immagine_tipo_I.png' col percorso e nome del tuo file immagine
+      \caption{Dati sul tempo di vita di capacitori, l’esperimento è terminato dopo 168 ore.}
+    \end{figure}
+
+  \item \textbf{Tipo II}, chiamata anche censura dei fallimenti, è una forma di censura a destra in cui il test viene interrotto non appena il numero di fallimenti raggiunge un importo fisso, definito prima di iniziare il test.
+    
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=4cm]{censura_II.png} % Sostituisci 'path/immagine_tipo_II.png' col percorso e nome del tuo file immagine
+      \caption{Dati sul tempo di vita di capacitori, l’esperimento è terminato dopo che 9 campioni sono falliti.}
+    \end{figure}
+\end{itemize}
+
+I campioni censurati di tipo I e II, anche se originati da diverse procedure di arresto delle prove, hanno in comune la caratteristica che i "tempi di fallimento" e i "tempi di censura" formano due gruppi di osservazioni completamente separati l'uno dall'altro. In effetti, ogni tempo di censura osservato è maggiore (o al massimo uguale) di qualsiasi tempo di fallimento osservato.
+
+    \subsubsection{Procedure non parametriche per la stima del tempo di vita}
+    Nel caso di un campione completo, la stima non parametrica della funzione di distribuzione del tempo di vita è una procedura statistica elementare. Negli studi di affidabilità, tuttavia, i campioni incompleti sono comuni, richiedendo anche procedure alternative.
+
+Nel caso di un campione completo di cardinalità $n$ (il numero totale di osservazioni nel campione), la stima naturale non parametrica della funzione di distribuzione cumulativa (CDF) di una variabile aleatoria $x$ a qualsiasi valore fisso è:
+
+\[
+\hat{F}(x)=\frac{i}{n}
+\]
+
+Dove $i$ è il numero di unità nel campione con valore osservato minore o uguale a $x$.
+
+Infatti, da una prospettiva della frequenza, $F(x)$ è la frazione (incognita) di unità che nell'intera popolazione hanno un valore minore o uguale a $x$. Corrisponde alla frazione di unità che mostrano questa proprietà nel campione e questa frazione è uguale a $i/n$.
+
+Poiché $i$ è una variabile aleatoria binomiale con parametri $n$ e $p=F(x)$, la cui media è $E\{i\}=np$ e la varianza è $Var\{i\}=np(1-p)$, si ha:
+
+\[
+E\left\{\frac{i}{n}\right\}=F(x) \quad {Var}\left\{\frac{i}{n}\right\}=\frac{F(x)[1-F(x)]}{n}
+\]
+
+Per $n \rightarrow \infty$, ${Var}\{i/n\} \rightarrow 0$ e quindi $\hat F(x)$ è uno stimatore imparziale e coerente di $F(x)$.
+
+Secondo una regola empirica, per stimare una probabilità pari a $p$ è necessario avere un campione di almeno $1/p$. Tuttavia, questo numero deve essere molto maggiore per avere una ragionevole probabilità di osservare almeno un evento di interesse e per avere una precisione di stima accettabile. Pertanto, la stima non parametrica di valori di bassa probabilità richiede campioni molto grandi.
+
+Dato un campione completo di $n$ osservazioni ordinate $x_{(1)}<x_{(2)}<... <x_{(n)}$, la funzione di distribuzione $F(x)$ è stimata dalla funzione di distribuzione empirica (cumulativa) che è una funzione a gradino:
+
+\[
+\hat F(x)=\frac{i}{n} \quad x_{(1)} \leq x < x_{(i+1)} \quad i=0,…,n \quad x_{(0)}=0,x_{(n+1)}=\infty
+\]
+
+che aumenta di $1/n$ in corrispondenza dei tempi di guasto osservati $x(i)$ elencati in ordine crescente, mentre è costante tra due tempi di guasto consecutivi.
+
+Si noti che $\hat F(x)$ è una funzione continua a destra per costruzione, e quindi
+
+\[
+\lim_{{\Delta\rightarrow0}}{\hat F(x_{(i)}+\Delta)}=\hat F(x_{(i)})=\frac{i}{n}
+\]
+
+mentre
+
+\[
+\lim_{{\Delta\rightarrow0}}{\hat F(x_{(i)}-\Delta)}=\hat F(x_{(i)}^-)=\frac{i-1}{n}
+\]
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Fcappello.png} % Sostituisci 'path/immagine_esempio.png' col percorso e nome del tuo file immagine
+  \caption{Esempio di $\hat F(x)$.}
+\end{figure}
+
+Vale la pena notare che questa procedura di stima non parametrica può essere applicata senza alcuna modifica al caso di schemi di censura di tipo I e II, per qualsiasi $x$ minore o uguale al tempo di censura. Infatti, i tempi censurati sono valori (non osservati) del tempo di vita certamente maggiori del tempo di censura, e non hanno alcun effetto sul calcolo del numero di campioni per i quali il valore del tempo di vita è compreso nell'intervallo $(0,x]$. Nel caso di schemi di censura generali (con dati censurati multipli), tuttavia, questo tipo di formulazione non può più essere utilizzata così come è stata presentata, perché quando l'intervallo $(0,x]$ contiene anche i tempi di censura, il numero di occorrenze della durata della variabile casuale inclusa in questo intervallo non è esattamente definito. In questo caso, dovrebbero essere utilizzate procedure più complesse per stimare $F(x)$, una di queste è lo stimatore di Kaplan-Meier (chiamato anche stimatore del limite di prodotto).
+
+    \subsubsection{Il metodo a massima verosimiglianza}
+<<<<<<< Updated upstream
+      \textbf{Modello binomiale}\\
+      \textbf{Modello normale}\\
+      \textbf{Modello esponenziale}
+=======
+    Sia $D$ un set di dati osservati e $M(\theta)$ il modello di probabilità caratterizzato dal vettore di parametri $\theta=(\theta_1,\theta_2,...,\theta_k)'$ definito da un insieme $\Theta$ di dimensionalità $k$. La funzione di $\theta$,
+
+    \[
+    L(\theta)=c \cdot Pr[D;\theta]
+    \]
+    
+    dove $c$ è una quantità scalare indipendente da $\theta$, è proporzionale alla probabilità di osservare i dati $D$ sotto il modello $M(\theta)$. Questa funzione si definisce likelihood (verosimiglianza).
+    
+    Sia $X$ una variabile randomica con pdf $p(x;\theta)$, dove $\theta$ rappresenta il modello della popolazione, da dove si estraggono campioni casuali composti da $n$ variabili randomiche indipendenti e identicamente distribuite $X_1,...,X_n$, dove i valori sono raccolti nel vettore $\underline x=(x_1,x_2,...,x_n)$. La funzione di likelihood è definita come:
+    
+    \[
+    L(\theta;\underline x)=c \cdot p(x_1;\theta)p(x_2;\theta)...p(x_n;\theta)=c\prod_{i=1}^n p(x_i;\theta)
+    \]
+    
+    La funzione di massima verosimiglianza è uno strumento per fare inferenza sul parametro sconosciuto $\theta$, dato $\underline x$ ed il modello della popolazione $M(\theta)$.
+    
+    La stima a massima verosimiglianza (Maximum Likelihood Estimate - MLE) di $\theta$ è il valore $\hat{\theta} \in \Theta$ che massimizza la funzione $L(\theta)$ sul parametro di spazio $\Theta$:
+    
+    \[
+    \hat{\theta}=\arg\max_\Theta L(\theta)
+    \]
+    
+    Questo criterio si basa sul fatto che il MLE rappresenta il valore del parametro sconosciuto che massimizza la probabilità di occorrenza del dato osservato, dato un modello di probabilità $M(\theta)$.
+    
+    Assumendo che le derivate della funzione di verosimiglianza esistano nello spazio $\Theta$, il MLE è quel punto dove tutte le derivate parziali prime valgono zero, dunque il gradiente della funzione di verosimiglianza è uguale a un vettore di dimensione $k$ nullo:
+    
+    \[
+    \nabla L(\theta)=0
+    \]
+    
+    Dunque il MLE deve essere trovato tra i punti stazionari, ad esempio, in un sistema con $n$ equazioni:
+    
+    \[
+    \frac{\delta L(\theta)}{\delta \theta_i}=0 \quad i=1,2,...,n
+    \]
+    
+    Finché si guarda il massimo di una funzione, è equivalente a guardare il massimo della sua trasformata monotona, quindi è spesso conveniente operare con la trasformata logaritmica della verosimiglianza $l(\theta)=\log L(\theta)$, chiamata log-verosimiglianza (log-likelihood).
+    
+    Il MLE ha il vantaggio di essere molto versatile; infatti, è facile da usare nella maggior parte dei modelli di distribuzione e schemi di campioni presenti nelle applicazioni.
+    
+    Il MLE $\hat{\theta}$ è una funzione di campioni di variabili randomiche e ne è lo stimatore. Inoltre, essendo lo stimatore una variabile randomica, la conoscenza della sua funzione di distribuzione permette di valutare l’accuratezza della procedura di stima, ad esempio attraverso gli intervalli di confidenza.
+    
+    Gli stimatori a massima verosimiglianza godono di alcune proprietà asintotiche:
+
+    \begin{itemize}
+      \item Sono consistenti, ovvero convergono al valore vero.
+      \item Sono asintoticamente efficienti, ovvero hanno la varianza più piccola possibile.
+      \item Sono asintoticamente normali, ovvero la loro funzione di distribuzione converge alla distribuzione normale.
+      \item Mostrano la proprietà di invarianza. Ciò significa che se $\eta=g(\theta)$ è una funzione uno a uno di parametro $\theta$, e $\hat{\theta}$ è un MLE di $\theta$, allora $\hat{\eta}=g(\hat{\theta})$ è lo stimatore di $\eta$.
+      \begin{itemize}
+        \item Questa proprietà è molto importante per la stima dell’affidabilità, quando la funzione di affidabilità $R(x;\theta)$ è biunivoca in $\theta$, il MLE dell’affidabilità al tempo di missione $x$ è $\hat{R}(x)=R(x;\hat{\theta})$.
+      \end{itemize}
+    \end{itemize}
+    
+    Inoltre, il metodo ML viene utilizzato anche in situazioni diverse di campioni indipendenti e distribuzioni identiche, ad esempio quando i dati sono raccolti da un sistema riparabile modellato da un processo non omogeneo di Poisson.
+    
+    Di seguito alcune applicazioni del metodo ML per la stima dei parametri del modello.
+    
+    \textbf{Modello binomiale}
+    
+    Sia $X$ una variabile randomica binomiale che conta i numeri dell’evento successo nella ripetizione di $n$ tentativi indipendenti di Bernoulli con parametro $\theta$. Avendo osservato $x$ “successi” in $n$ tentativi, la funzione di verosimiglianza del modello è:
+    
+    \[
+    L(\theta;n,x)=\frac{n!}{x!(n-x)!}\theta^x(1-\theta)^{n-x}
+    \]
+    
+    Cercando il massimo della funzione, possiamo omettere $\frac{n!}{x!(n-x)!}$ perché non dipende dal parametro $\theta$. La log-verosimiglianza vale:
+    
+    \[
+    l(\theta)=\log(L(\theta))=x\log(\theta)+(n-x)\log(1-\theta)
+    \]
+    
+    Lo stimatore a massima verosimiglianza di $\theta$ è dato da:
+    
+    \[
+    \frac{\delta \log(L(\theta))}{\delta \theta}=\frac{x}{\theta}-\frac{n-x}{1-\theta}=0 \Rightarrow x(1-\theta)=(n-x)\theta
+    \]
+    
+    Da qui si ottiene lo stimatore a massima verosimiglianza:
+    
+    \[
+    \hat{\theta}=\frac{x}{n}
+    \]
+    
+    \textbf{Modello normale}
+    
+    Sia $X$ una variabile randomica distribuita secondo il modello normale $M(\theta)=N(\mu,\sigma^2)$, si vogliono stimare i due parametri $\theta_1=\mu$ e $\theta_2=\sigma^2$. Dato il vettore dei campioni completi di $n$ osservazioni $\underline x=(x_1,x_2,...,x_n)$, si ha che la funzione di verosimiglianza è:
+    
+    \[
+    L(\mu,\sigma;\underline x)=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x_1-\mu)^2}{2\sigma^2}}\cdot...\cdot\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x_n-\mu)^2}{2\sigma^2}}=\left[\frac{1}{\sqrt{2\pi}}\right]^n\sigma^{-n}e^{-\frac{\sum_{i=1}^{n}(x_i-\mu)^2}{2\sigma^2}}
+    \]
+    
+    Il fattore moltiplicativo $\left(\frac{1}{\sqrt{2\pi}}\right)^n$ può essere omesso perché non contiene parametri. Ricordando che $\theta_1=\mu$ e $\theta_2=\sigma^2$, la log-verosimiglianza è:
+    
+    \[
+    l(\theta_1,\theta_2)=\log(L(\theta_1,\theta_2))=-\frac{n}{2}\log(\theta_2)-\frac{\sum_{i=1}^n(x_i-\theta_1)^2}{2\theta_2}
+    \]
+    
+    I due MLE sono le soluzioni di questo sistema:
+    
+    \[
+    \frac{\delta \log(L(\theta_1,\theta_2))}{\delta \theta_1}=\frac{1}{\theta_2}\sum_{i=1}^n(x_i-\theta_1)=0$$
+    \newline
+    $$\frac{\delta \log(L(\theta_1,\theta_2))}{\delta \theta_2}=-\frac{n}{2\theta_2}+\frac{1}{2(\theta_2)^2}\sum_{i=1}^n(x_i-\theta_1)^2=0
+    \]
+    
+    Da qui si ottengono i due MLE:
+    
+    \[
+    \hat{\theta}_1=\frac{\sum_{i=1}^nx_i}{n}=\hat{\mu}$$
+    \newline
+    $$\hat{\theta}_2=\frac{\sum_{i=1}^n(x_i-\hat{\mu})^2}{n}=\hat{\sigma}^2
+    \]
+    
+    \textbf{Modello esponenziale}
+    
+    Sia $X$ una variabile randomica distribuita esponenzialmente. Dato il vettore dei campioni completi di $n$ osservazioni $\underline x=(x_1,x_2,...,x_n)$, si ha che la funzione di verosimiglianza è:
+    
+    \[
+    L(\theta;\underline x)=\prod_{i=1}^n\theta^{-1}e^{-\frac{x_i}{\theta}}=\theta^{-n}e^{-\theta^{-1}\sum^n_{i=1}x_i}
+    \]
+    
+    Definendo $T^*=\sum_{i=1}^nx_i$ la statistica sufficiente per la stima di $\theta$, la log-verosimiglianza può essere scritta come:
+    
+    \[
+    \log(L(\theta))=-n\log(\theta)-\theta^{-1}T^*
+    \]
+    
+    Il MLE è dato dalla seguente equazione da risolvere:
+    
+    \[
+    \frac{\delta \log(L(\theta))}{\delta \theta}=-n\theta^{-1}+T^*\theta^{-2}=0
+    \]
+    
+    Il MLE ottenuto è:
+    
+    \[
+    \hat{\theta}=\frac{T^*}{n}=\frac{\sum_{i=1}^nx_i}{n}
+    \]
+    
+    Risulta interessante notare che il MLE è uguale alla media dei campioni osservati, quindi rappresenta il valore atteso di $X$.
+    
+
+ 
+    \subsubsection{Il metodo a massima verosimiglianza per i dati censurati}
+    I dati di fallimento sono discreti anche nel tempo continuo, ed i tempi di osservazione $\underline t=(t_1,t_2,...,t_m)$ nel test di durata di n unità possono esserci tempi di fallimento, tempi di sopravvivenza o tempi di ispezioni, i quali possono portare delle censure (per gli ultimi due tempi, rispettivamente right censoring e interval/left censoring).
+
+Per calcolare la funzione di verosimiglianza $L(\theta;\underline t)$ risulta comodo partizionare l’asse dei tempi in m+1 intervalli, dipendenti dai tempi di osservazione.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{linea_tempo.png}
+  \caption{Caption della figura.}
+\end{figure}
+
+Le informazioni durante il test sono contenute nella funzione di verosimiglianza che vale:
+
+$$
+L(\theta;\underline t)=c\prod_{i=1}^nL_i(\theta)
+$$
+
+dove $L_i(\theta)$ rappresenta il contributo della i-esima osservazione alla funzione di verosimiglianza dato il modello di fallimento $M(\theta)$.
+
+Il valore di questi contributi dipende se l’unità i è fallita o meno, se fallisce rappresenta la probabilità di fallire nel corrispondente intervallo di incertezza.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{grafico_censoring_base.png}
+  \caption{Caption della figura.}
+\end{figure}
+
+I contributi $L_i(\theta)$ si calcolano come:
+
+\begin{itemize}
+  \item Per tempi esatti di fallimento \(t_i\)
+  
+  \[
+  L_i(\theta) = p(t_i;\theta)
+  \]
+  
+  \item Per osservazioni con intervalli di censura negli intervalli \((t_{j-1},t_j)\), dove i tempi di fallimento sono accaduti in questo intervallo
+  
+  \[
+  L_i(\theta) = \int_{t_{j-1}}^{t_j} p(t;\theta) \, dt = F(t_j) - F(t_{j-1})
+  \]
+  
+  \item Per osservazioni con censure a sinistra prima di \(t_j\), dove i tempi di fallimento sono accaduti prima di questo tempo
+  
+  \[
+  L_i(\theta) = \int_{0}^{t_j} p(t;\theta) \, dt = F(t_j) - F(0) = F(t_j)
+  \]
+  
+  \item Per osservazioni con censure a destra dopo \(t_j\), dove i tempi di fallimento sono accaduti dopo di questo tempo
+  
+  \[
+  L_i(\theta) = \int_{t_j}^{\infty} p(t;\theta) \, dt = F(\infty) - F(t_j) = 1 - F(t_j)
+  \]
+\end{itemize}
+
+
+La verosimiglianza totale è data da:
+
+$$
+L(\theta;\underline t)=c\prod_{i=1}^nL(\theta)=
+c\prod_{i}^np(t_i;\theta)
+\prod_{j}[F(t_j)-F(t_{j-1})]^{d_j}
+[F(t_j)]^{l_j}
+[1-F(t_j)]^{r_j}
+$$
+
+dove $d_j$ è il numero di unità fallite nell’intervallo $(t_{j-1},t_j)$, $l_j$ è il numero di unità fallite prima di $t_j$, e $r_j$ è il numero di unità fallite dopo $t_j$.
+
+Sia $e$ il numero esatto di tempi di fallimento, il numero di tempi di ispezione è uguale a:
+
+$$
+n-e=\sum_j(d_j+l_j+r_j)
+$$
+
+    \subsubsection{Calcolo MLE per il tasso di guasto}
+    Essendo a conoscenza che il campione dei tempi di guasto ha una censura di tipo I (time censoring). La verosimiglianza totale:
+
+    $$
+L(\theta;\underline t)=c\prod_{i=1}^nL(\theta)=
+c\prod_{i}^np(t_i;\theta)
+\prod_{j}[F(t_j)-F(t_{j-1})]^{d_j}
+[F(t_j)]^{l_j}
+[1-F(t_j)]^{r_j}
+$$
+
+può essere riscritta come (è stata omessa la costante c poichè non influente al parametro $\theta$):
+
+    $$
+L(\theta;\underline t)=\prod_{i=1}^nL(\theta)=
+\prod_{i}^{m}p(t_i;\theta)\prod^{n-m}_{j}[1-F(\tau_j)]^{r_j}
+$$
+
+poiché le censure sono presenti solo a destra e non vi sono occorrenze né intervallari né a sinistra, è possibile ometterle dalla formula. 
+Si prega di notare che, sebbene inizialmente si sia usato il carattere $t_j$, esso è stato sostituito al passaggio successivo da $\tau_j$, in modo tale da evidenziare gli $n-m$ tempi di sopravvivenza.
+
+Assumendo i tempi di guasto esponenzaiali per il componente, si ha che la distribuzione è di tipo esponenziale:
+
+$$F(x)=1-\exp(-x/\theta)$$
+
+La verosimiglianza totale, sostitutendo con la distribuzione esponenziale, può riscriversi come:
+
+$$
+L(\theta;\underline t)=
+\prod_{i}^m(\theta^{-1}\exp(-t_i/{\theta})\prod^{n-m}_{j}[1-1+\exp(-\tau_j/{\theta})]^{r_j}
+$$
+
+Che semplificando diventa:
+
+$$
+L(\theta;\underline t)=
+\prod_{i}^{m}(\theta^{-1}\exp(-t_i/{\theta}))\prod_{j}^{n-m}[\exp(-\tau_j/{\theta})]^{r_j}
+$$
+
+Soffermandoci su $[\exp(-\tau_j/{\theta})]^{r_j}$, esso può essere riscritto come prodotto tra due esponenziali:
+
+$$
+L(\theta;\underline t)=
+\prod_{i}^{m}(\theta^{-1}\exp(-t_i/{\theta}))\prod_{j}^{n-m}[\exp(-\tau_j/{\theta})\cdot \exp(r_j)]
+$$
+
+Si nota che $\exp(r_j)$ è una costante, dunque può essere omesso:
+
+$$
+L(\theta;\underline t)=
+\prod_{i}^{m}(\theta^{-1}\exp(-t_i/{\theta}))\prod_{j}^{n-m}[\exp(-\tau_j/{\theta})]
+$$
+
+Sfruttando le proprietà degli esponenziali, la verosimiglianza totale diventa:
+
+$$
+L(\theta;\underline t)=
+\theta^{-m}\exp\left(-\frac{\sum_{i=1}^mt_i+\sum_{j=1}^{n-m}\tau_j}{\theta}\right)
+$$
+
+Si procede ora al calcolo della log-verosimiglianza totale:
+
+$$
+\log(L(\theta;\underline t))=\log\left(
+\theta^{-m}\exp\left(-\frac{\sum_{i=1}^mt_i+\sum_{j=1}^{n-m}\tau_j}{\theta}\right)\right)
+$$
+
+Si introduce la statistica sufficiente $T^*$: 
+
+$$
+T^*=\sum_{i=1}^mt_i+\sum_{j=1}^{n-m}\tau_j
+$$
+
+La log-verosimiglianza totale, sostitutendo con la statistica sufficiente, può riscriversi come:
+
+$$
+\log(L(\theta;\underline t))=\log\left(
+\theta^{-m}\exp\left(-\frac{T^*}{\theta}\right)\right)
+$$
+
+Semplificando il logaritmo con l'esponenziale si ottiene:
+
+$$
+\log(L(\theta;\underline t))=-m\log
+\theta-\frac{T^*}{\theta}
+$$
+
+Lo stimatore a massima verosimiglianza deve essere trovato tra i punti stazionari:
+
+$$
+\frac{\delta}{\delta\theta}\left(-m\log
+\theta-\frac{T^*}{\theta}\right)=0
+$$
+
+Semplificando l'equazione si ottiene:
+
+$$
+-\frac{m}{
+\theta}+\frac{T^*}{\theta^2}=0
+$$
+
+Lo stimatore a a messima verosimiglianza risulta essere quindi:
+
+$$
+\hat\theta=\frac{T^*}{m}
+$$
+
+Sostituendo con la statistica sufficiente si ottiene:
+
+$$
+\hat\theta=\frac{T^*}{m}=\frac{\sum_{i=1}^mt_i+\sum_{j=1}^{n-m}\tau_j}{m}
+$$
+
+Analizzando i file forniti "censoring" e "failures", si ottengono il numero di campioni $n$, il numero di tempi di fallimento $m$ ed i tempi di sopravvivenza $\tau_j$: 
+
+$$
+n=80\qquad m=70\qquad \tau_j=\tau=3.0*10^4\qquad \forall{j}
+$$
+
+Sostituendo queste informazioni nell'equazione di prima, è possibile calcolare lo stimatore a massima verosimiglianza:
+
+$$
+\hat\theta=\frac{\sum_{i=1}^{70}t_i+10*3.0*10^4}{70}
+$$
+
+Questo stimatore ci permette di calcolare il MTTF del layer fisico PHY del sistema S2: 
+
+$MTTF=14518.64\ h\ \Rightarrow\ \lambda_{PHY}=0.00006888$
+
+    \subsubsection{Calcolo MLE per il tasso di riparazione}
+    Assumendo i tempi di riparazione esponenzaiali per il componente, si ha che la distribuzione è di tipo esponenziale.
+    Lo stimatore a massima verosimiglianza, in questo caso, è banalmente la media campionaria:
+
+    $$\hat{\theta}=\frac{\sum_{i=1}^{n}t_i}{n}$$
+
+    Dove $t_i$ sono i tempi di riparazione ed $n$ il numero di campioni, informazioni che si possono ottenere dal file fornito "repairs":
+
+    $$n=70$$
+
+    Questo stimatore ci permette di calcolare il MTTR del layer fisico PHY del sistema S2:
+
+$MTTR=5.18\ h\ \Rightarrow\ \mu_{PHY}=0.1930$
+
+I calcoli per entrambi gli stimatori a massima verosimiglianza sono stati effettuati tramite uno script python allegato alla consegna ("MLE.py").
+  \subsection{Sistema stazione di monitoraggio}
+    Il sistema fault-tolerant S1 (stazione di monitoraggio) è composto, a sua volta, da due sottosistemi, i cui
+    componenti rilevanti per il modello di disponibilita sono: un sensore, modellato da Continuous-Time Markov
+    Chain (CTMC) a due stati (stato funzionante e stato non funzionante) con mean time to failure $MTTF_{sens}=
+    400h$ e mean time to repair $MTTR_{sens} = 8 h$, e un elemento di storage, con modello di availability come
+    quello riportato in Fig. 6 nell'articolo [1], con valori dei parametri riportati nello stesso lavoro. Un sottosistema
+    funziona se i suoi componenti sensore e storage sono funzionanti, mentre il sistema S1 funziona se almeno
+    uno dei due sottosistemi e funzionante.
+    \begin{center}
+    \includegraphics[width=1\linewidth]{images/CTMC_stor.png}
+    \end{center}
+    \subsubsection{Dati}
+    Di seguito sono riportati tutti i dati relativi al sottosistema S1.\\ 
+    \resizebox{1\textwidth}{!}{%
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Parametro} & \textbf{Descrizione} & \textbf{Valore}\\
+        \hline
+        $1/\lambda_{stor}$ & tempo medio per il fallimento dello storage & 20000 h\\
+        \hline
+        $1/\alpha_{rep}$ & tempo medio di convocazione tecnici & 30 min (1/2 h)\\
+        \hline
+        $1/\mu_{1stor}$	& tempo medio per la riparazione di un disco & 30 min (1/2 h)\\
+        \hline
+        $1/\mu_{2stor}$ &	tempo medio per la riparazione di due dischi & 60 min (1 h)\\
+        \hline
+        $1/\chi_{rep}$ & tempo medio per copiare i dati & 20 min (1/3 h)\\
+        \hline
+      \end{tabular}%
+      }
+    \subsubsection{CTMC sensore}
+      Il tool SHARPE Interface è utilizzato per la modellazione dei sistemi e componenti in esame, per il sottosistema S1 si devono modellare le due componenti, sensore e storage.
+      Analizziamo il sensore: essendo un'unità riparabile si utilizza un CTMC per modellare i due possibili stati in cui il compoentente può essere (funzionante e guasto).
+      \begin{center}
+        \includegraphics{images/SHARPE_sens.png}
+      \end{center}
+
+    \subsubsection{CTMC storage}
+    Il secondo componente del sottosistema S1 è lo storage modellato usando una CTMC con lo stesso schema mostrato in figura [6] dell'articolo 1.
+    \begin{center}
+      \includegraphics[width=1\textwidth]{images/SHARPE_stor.png}
+    \end{center}
+
+    \subsubsection{FT stazione di monitoraggio}
+      Il sottosistema S1 è composto a sua volta da due sottosistemi paralleli composti da
+      una serie di un sensore e uno storage. Modellizzando S1 come un Fault Tree è possibile visualizzare
+      i contributi dei guasti dei singoli componenti che possono portare o meno al malfunzionamento di tutto S1.
+      Utilizzando SHARPE Interface è possibile utilizzare modelli già creati come componenti per sistemi più complessi,
+      come in questo caso, sfruttando al funzione di gerarchia.
+      \begin{center}
+        \includegraphics[width=0.9\textwidth]{images/SHARPE_S1.png}
+      \end{center}
+    \subsubsection{Disponibilità stazionaria}
+      Una volta che sono stati modellati tutti i componenti e il sistema S1, si può utilizzare SHARPE Interface 
+      per calcolare la steady state Availability.
+      $$
+      Avail_{SS}=0.999613608
+      $$ 
+  \subsection{Sistema nodo di rete SFC}
+    \subsubsection{Dati}
+    \subsubsection{CTMC layers}
+    \subsubsection{SPN nodo di rete SFC}
+    \subsubsection{Disponibilità stazionaria}
+    \subsection{Sistema elaboratori}
+    \subsubsection{Dati}
+    \subsubsection{CTMC CPU}
+    \subsubsection{CTMC storage}
+    \subsubsection{CTMC software analisi dei dati}
+    \subsubsection{CTMC hardware}
+    \subsubsection{RBD elaboratori}
+    \subsubsection{Disponibilità stazionaria}
+  \subsection{Ridondanza}
+    \subsubsection{RBD sistema}
+    \subsubsection{Problema con Interface Sharpe}
+    \subsubsection{Codice Python alternativo RBD}
+<<<<<<< Updated upstream
+      \textbf{Classe Blocco}\\
+      \textbf{Classe Serie}\\
+=======
+      \textbf{Classe Blocco}
+
+      \textbf{Classe Serie}
+
+ 
+      \textbf{Classe Parallelo}
+
+    \subsubsection{Ricerca esaustiva RBD ottimale}
+    \subsubsection{RBD finale del sistema}
+  \subsection{Analisi di sensitività dei parametri di DCK}
+    Dato il corrente sistema, con le dovute ridondanze per il raggiungimento dei 6-nines, 
+    si vuole capire la robustezza di tale soluzione, 
+    ovvero si vuole vedere l'andamento dell'Availability fino al quando la specifica non è più soddisfatta. 
+    I parametri che saranno modificati nella seguente analisi di sensitività sono il failure rate 
+    e il repair rate del layer Docker del sottosistema S2 ($\lambda_{DCK}$ e $\mu_{DCK}$).
+    \subsubsection{Analisi di sensitività}
+      Data una specifica di progetto sull'affidabilità del sistema è possibile studiare la robustezza del sistema 
+      facendone deviare i valori nominali fino a valori limite che soddisfano ancora la specifica del sistema 
+      e la differenza tra i valori nominali e quelli limite indica la robustezza del sistema. 
+      Questa analisi si può eseguire sia sui tassi di guasto che di riparazione, 
+      con interpretazioni grafiche duali tra loro: per i tassi di guasto, essendo la funzione strettamente crescente, 
+      il valore limite sarà il minimo tasso di guasto necessario per garantire che il sistema soddisfi la specifica; 
+      mentre per i tassi di riparazione, dato che sono funzioni strettamente decrescenti, 
+      il valore limite sarà il massimo tasso di riparazione accettabile.
+      \includegraphics[width=1\linewidth]{images/analysis_sens_2_9_1_1.png}
+      \includegraphics[width=1\linewidth]{images/analysis_sens_2_9_1_2.png}
+      Questo tipo di analisi, parallela allo studio di affidabilità, è utile per comprendere una caratteristica fondamentale del sistema: 
+      la robustezza, ovvero conoscere il margine accettabile in cui lo studio di affidabilità effettuato può muoversi, 
+      ad esempio in caso il valore reale di affidabilità di un componente del sistema devi da quello nominale oppure cambi lentamente nel tempo. 
+      Si può usare questo tipo di analisi anche per ottimizzazioni in caso si voglia creare un sistema affidabile entro una certa soglia 
+      ma spendendo il meno possibile in risorse: analizzando l'andamento sia dei tassi di fallimento che di guasto è possibile trovare il valore 
+      che più ottimizza la spesa di risorse e l'affidabilità. 
+      \subsubsection{Codice Python per ricerca dei valori critici $\lambda^*_{DCK} \ e \ \mu^*_{DCK}$}
+      Il valore critico di failure rate per la componente Docker del sistema S2 è stato calcolato innanzitutto 
+      trovando il più grande valore di Availability di S2 che fa si che il sistema abbia \textit{5-nines} 
+      ma non \textit{6-nines}, per fare ciò è stato usato il seguente codice dove in un ciclo si decrementa 
+      l'Availability di S2 per poi calcolare l'Availability di tutto il sistema S1-S2-S3, 
+      con le dovute ridondanze precedentemente trovate, se tale valore di affidabilità è più piccolo di 6-nines 
+      allora si stampa sia il valore di Availability del sistema che di S2 e si ferma il ciclo.
+      \begin{verbatim}[]
+        S1 = Block(9.99613608e-001)
+        S3 = Block(9.98928684e-001)
+
+        for i in range(1000000):
+          S2 = Block((9.97388233e-001)-0.0000001*i)
+          Sistema = Serie([Parallel([S1]*2), Parallel([S2]*3),
+            Parallel([S3]*3)])
+          if (Sistema.get_avail()<0.999999):
+              print(Sistema.get_avail())
+              print(S2.get_avail())
+              break
+      \end{verbatim}
+      Tali valori sono:
+      $$
+      Avail_{Sistema}=0.9999989999872863\qquad Avail_{S2}=0.9905292330000001
+      $$
+      Una volta trovata il valore di Availability di S2 si va a modificare il valore di $\mu_{DCK}$ 
+      in modo da ottenere tale valore
+    \subsubsection{Presentazione campioni misurati per $\lambda_{DCK}$}
+      Successivamente sono riportati i valori del MTTF della componente DCK 
+      e i corrispondenti valori di Availability del sottosistema S2.
+      \begin{center} 
+        \begin{longtable}{cc}
+          \hline
+          \textbf{MTTF DCK} & \textbf{S2 Availability}\\
+          \hline
+            1200	& 9.97388233e-001\\
+            1100	& 9.97386345e-001\\
+            1000	& 9.97384078e-001\\
+            900	& 9.97381307e-001\\
+            800	& 9.97377844e-001\\
+            700	& 9.97373392e-001\\
+            600	& 9.97367459e-001\\
+            500	& 9.97359144e-001\\
+            400 &	9.97346678e-001\\
+            300 &	9.97325901e-001\\
+            200 &	9.97284349e-001\\
+            100 &	9.97159709e-001\\
+            50 &	9.96910505e-001\\
+            25 &	9.96412395e-001\\
+            20 &	9.96163469e-001\\
+            15 &	9.95748827e-001\\
+            10 &	9.94920345e-001\\
+            9 &	9.94644424e-001\\
+            8	& 9.94299684e-001\\
+            7	& 9.93856727e-001\\
+            6	& 9.93266597e-001\\
+            5	& 9.92441322e-001\\
+            4.9 &	9.92340343e-001\\
+            4.8	& 9.92235171e-001\\
+            4.7	& 9.92125543e-001\\
+            4.6	& 9.92011169e-001\\
+            4.5	& 9.91891733e-001\\
+            4.4	& 9.91766892e-001\\
+            4.3	& 9.91636271e-001\\
+            4.2 &	9.91499457e-001\\
+            4.1 &	9.91356004e-001\\
+            4	& 9.91205406e-001\\
+            3.9 &	9.91047131e-001\\
+            3.8	& 9.90880570e-001\\
+            3.7	& 9.90705047e-001\\
+            3.65 &	9.90613699e-001\\
+            \cellcolor{yellow}3.604948 & \cellcolor{yellow}9.90529233e-001\\
+            3.5	& 9.90324083e-001\\
+            3.4	& 9.90116889e-001\\
+          \hline
+        \end{longtable}
+      \end{center}
+      La riga evidenziata corrisponde al valore limite di MTTF e Availability. 
+      I grafici successivi mostrano l'andamento della Availability al variare di $\lambda_{DCK}$. 
+      Come si può vedere il valore nominale si trova in una parte del grafico "piatta", 
+      ovvero minimi cambiamenti al failure rate non portano grandi differenze al sistema: 
+      infatti per non soddisfare il requisito dei \textit{6-nines} c'è bisogno che il MTTF sia meno di 4 ore 
+      quando inizialmente è di 1200 ore, questo implica una grande robustezza del sistema per cambiamenti su $\lambda_{DCK}$\\
+      \begin{figure}[h]
+        \centering
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=1\linewidth]{images/Analysis_sens_lambda_1.png}
+        \end{subfigure}%
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=1\linewidth]{images/Analysis_sens_lambda_2.png}
+        \end{subfigure}
+      \end{figure}
+      \subsubsection{Presentazione campioni misurati per $\mu_{DCK}$}
+      Successivamente sono riportati i valori del MTTR della componente DCK 
+      e i corrispondenti valori di Availability del sottosistema S2.
+      \begin{center} 
+        \begin{longtable}{cc}
+          \hline
+          \textbf{MTTR DCK} & \textbf{S2 Availability}\\
+          \hline
+            1/60 & 9.97388233e-001 \\
+            1/30 & 9.97361693e-001\\
+            1/20	& 9.97335155e-001\\
+            1/10 & 9.97255548e-001\\
+            1	& 9.95824787e-001\\
+            2	& 9.94239860e-001\\
+            2.5	& 9.93449286e-001\\
+            2.6	& 9.93291323e-001\\
+            2.7	& 9.93133409e-001\\
+            2.8	& 9.92975546e-001\\
+            2.9	& 9.92817732e-001\\
+            3	& 9.92659969e-001\\
+            3.1	& 9.92502257e-001\\
+            3.2	& 9.92344594e-001\\
+            3.3	& 9.92186981e-001\\
+            3.4	& 9.92029418e-001\\
+            3.45	& 9.91950656e-001\\
+            3.5	& 9.91871906e-001\\
+            3.55	& 9.91793168e-001\\
+            3.6	& 9.91714443e-001\\
+            3.65 & 9.91635731e-001\\
+            3.7	& 9.91557031e-001\\
+            3.75 & 9.91478343e-001\\
+            3.8	& 9.91399668e-001\\
+            3.85 & 9.91321005e-001\\
+            3.9	& 9.91242355e-001\\
+            3.95 & 9.91163718e-001\\
+            4	& 9.91085092e-001\\
+            4.05 & 9.91006480e-001\\
+            4.1	& 9.90927880e-001\\
+            4.15 & 9.90849292e-001\\
+            4.2	& 9.90770717e-001\\
+            4.25 & 9.90692154e-001\\
+            4.3	& 9.90613603e-001\\
+            \cellcolor{yellow}4.3537135	& \cellcolor{yellow}9.90529233e-001\\
+            4.4	& 9.90456540e-001\\
+            4.45 & 9.90378027e-001\\
+            4.5	& 9.90299526e-001\\
+            4.55 & 9.90221038e-001\\
+          \hline
+        \end{longtable}
+      \end{center}
+      La riga evidenziata corrisponde al valore limite di MTTR e Availability. 
+      I grafici successivi mostrano l'andamento della Availability al variare di $\mu_{DCK}$. 
+      In questo caso il cambiamento è più significativo dato che il valore limite si trova relativamente vicino al valore nominale, 
+      che, peraltro, si trova in una parte della curva con già una pendenza significativa; 
+      quindi considerando l'intero componente Docker è più critico il tempo di riparazione che quello di guasto. 
+      \begin{figure}[h]
+        \centering
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=1\linewidth]{images/Analysis_sens_mu_1.png}
+        \end{subfigure}%
+        \begin{subfigure}{.5\textwidth}
+          \centering
+          \includegraphics[width=1\linewidth]{images/Analysis_sens_mu_2.png}
+        \end{subfigure}
+      \end{figure}
+\section{Conclusioni}
+\end{document}
