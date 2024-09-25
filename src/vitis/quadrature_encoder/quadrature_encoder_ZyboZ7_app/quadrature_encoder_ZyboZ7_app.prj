@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="quadrature_encoder_ZyboZ7_app" location="C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app" platform="C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/quadrature_encoder_ZyboZ7_platform.xpfm" platformUID="xilinx:zybo-z7-20::0.0(custom)" systemProject="quadrature_encoder_ZyboZ7_app_system" sysConfig="quadrature_encoder_ZyboZ7_platform" runtime="C/C++" cpu="standalone_domain" cpuInstance="ps7_cortexa9_0" os="standalone" mssSignature="79d318334a5ea51a8b8eeb1e06e3181a">
+  <configuration name="Debug" id="xilinx.gnu.armv7.exe.debug.1156074043">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.armv7.exe.release.819762299" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

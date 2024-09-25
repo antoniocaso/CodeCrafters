@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Thu Jun 27 16:19:12 2024
+# Process ID: 14180
+# Current directory: C:/consegna/quadrature_encoder/quadrature_encoder.runs/design_1_axi_gpio_0_1_synth_1
+# Command line: vivado.exe -log design_1_axi_gpio_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_axi_gpio_0_1.tcl
+# Log file: C:/consegna/quadrature_encoder/quadrature_encoder.runs/design_1_axi_gpio_0_1_synth_1/design_1_axi_gpio_0_1.vds
+# Journal file: C:/consegna/quadrature_encoder/quadrature_encoder.runs/design_1_axi_gpio_0_1_synth_1\vivado.jou
+# Running On: Antonio, OS: Windows, CPU Frequency: 2496 MHz, CPU Physical cores: 12, Host memory: 16785 MB
+#-----------------------------------------------------------
+source design_1_axi_gpio_0_1.tcl -notrace

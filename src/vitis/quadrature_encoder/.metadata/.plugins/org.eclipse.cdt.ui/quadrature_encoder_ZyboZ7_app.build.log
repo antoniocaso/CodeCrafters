@@ -1,0 +1,167 @@
+13:13:12 **** Build of configuration Debug for project quadrature_encoder_ZyboZ7_app ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+' '
+make --no-print-directory main-build
+'Building file: ../src/main.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'init_Zynq':
+../src/main.c:40:2: warning: implicit declaration of function 'init_oled' [-Wimplicit-function-declaration]
+   40 |  init_oled();
+      |  ^~~~~~~~~
+In file included from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xspi.h:313,
+                 from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/PmodOLEDrgb.h:32,
+                 from ../src/main.c:2:
+C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xstatus.h:43:41: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   43 | #define XST_FAILURE                     1L
+      |                                         ^~
+../src/main.c:51:10: note: in expansion of macro 'XST_FAILURE'
+   51 |   return XST_FAILURE;
+      |          ^~~~~~~~~~~
+../src/main.c:38:6: note: declared here
+   38 | void init_Zynq(){
+      |      ^~~~~~~~~
+../src/main.c:60:16: warning: implicit declaration of function 'InitializeTimer' [-Wimplicit-function-declaration]
+   60 |  int status2 = InitializeTimer(&Timer);
+      |                ^~~~~~~~~~~~~~~
+In file included from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xspi.h:313,
+                 from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/PmodOLEDrgb.h:32,
+                 from ../src/main.c:2:
+C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xstatus.h:43:41: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   43 | #define XST_FAILURE                     1L
+      |                                         ^~
+../src/main.c:63:10: note: in expansion of macro 'XST_FAILURE'
+   63 |   return XST_FAILURE;
+      |          ^~~~~~~~~~~
+../src/main.c:38:6: note: declared here
+   38 | void init_Zynq(){
+      |      ^~~~~~~~~
+../src/main.c:67:12: warning: implicit declaration of function 'SetupInterruptSystem' [-Wimplicit-function-declaration]
+   67 |  status2 = SetupInterruptSystem(&InterruptController, &Timer);
+      |            ^~~~~~~~~~~~~~~~~~~~
+In file included from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xspi.h:313,
+                 from C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/PmodOLEDrgb.h:32,
+                 from ../src/main.c:2:
+C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include/xstatus.h:43:41: warning: 'return' with a value, in function returning void [-Wreturn-type]
+   43 | #define XST_FAILURE                     1L
+      |                                         ^~
+../src/main.c:70:10: note: in expansion of macro 'XST_FAILURE'
+   70 |   return XST_FAILURE;
+      |          ^~~~~~~~~~~
+../src/main.c:38:6: note: declared here
+   38 | void init_Zynq(){
+      |      ^~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:106:6: warning: conflicting types for 'init_oled'
+  106 | void init_oled() {
+      |      ^~~~~~~~~
+../src/main.c:40:2: note: previous implicit declaration of 'init_oled' was here
+   40 |  init_oled();
+      |  ^~~~~~~~~
+../src/main.c: In function 'init_oled':
+../src/main.c:107:4: warning: implicit declaration of function 'EnableCaches' [-Wimplicit-function-declaration]
+  107 |    EnableCaches();
+      |    ^~~~~~~~~~~~
+../src/main.c:112:4: warning: implicit declaration of function 'OLEDrgb_FillBackground' [-Wimplicit-function-declaration]
+  112 |    OLEDrgb_FillBackground(&oledrgb, 0, 0, 255); //Scegli colore background
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:113:4: warning: implicit declaration of function 'change_fontcolor_rgb' [-Wimplicit-function-declaration]
+  113 |    change_fontcolor_rgb(255,255,255); //Scegli colore delle scritte
+      |    ^~~~~~~~~~~~~~~~~~~~
+../src/main.c: At top level:
+../src/main.c:179:6: warning: conflicting types for 'OLEDrgb_FillBackground'
+  179 | void OLEDrgb_FillBackground(PmodOLEDrgb *oledrgb, u8 R, u8 G, u8 B){ //Funzione autofatta: fa il background bianco
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:112:4: note: previous implicit declaration of 'OLEDrgb_FillBackground' was here
+  112 |    OLEDrgb_FillBackground(&oledrgb, 0, 0, 255); //Scegli colore background
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+../src/main.c: In function 'OledCleanup':
+../src/main.c:192:4: warning: implicit declaration of function 'DisableCaches' [-Wimplicit-function-declaration]
+  192 |    DisableCaches();
+      |    ^~~~~~~~~~~~~
+../src/main.c: In function 'print_speed':
+../src/main.c:197:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  197 |  sprintf(*b, "%d    ", (direction==1) ? speed : -speed);
+      |  ^~~~~~~
+../src/main.c:197:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../src/main.c:14:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   13 | #include <math.h>
+  +++ |+#include <stdio.h>
+   14 | 
+../src/main.c: In function 'print_acceleration':
+../src/main.c:209:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+  209 |  sprintf(*b, "%d     ", acceleration);
+      |  ^~~~~~~
+../src/main.c:209:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../src/main.c: At top level:
+../src/main.c:235:6: warning: conflicting types for 'EnableCaches'
+  235 | void EnableCaches() {
+      |      ^~~~~~~~~~~~
+../src/main.c:107:4: note: previous implicit declaration of 'EnableCaches' was here
+  107 |    EnableCaches();
+      |    ^~~~~~~~~~~~
+../src/main.c:246:6: warning: conflicting types for 'DisableCaches'
+  246 | void DisableCaches() {
+      |      ^~~~~~~~~~~~~
+../src/main.c:192:4: note: previous implicit declaration of 'DisableCaches' was here
+  192 |    DisableCaches();
+      |    ^~~~~~~~~~~~~
+../src/main.c:258:6: warning: conflicting types for 'change_fontcolor_rgb'
+  258 | void change_fontcolor_rgb(u8 R, u8 G, u8 B){
+      |      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:113:4: note: previous implicit declaration of 'change_fontcolor_rgb' was here
+  113 |    change_fontcolor_rgb(255,255,255); //Scegli colore delle scritte
+      |    ^~~~~~~~~~~~~~~~~~~~
+../src/main.c: In function 'main':
+../src/main.c:271:15: warning: passing argument 1 of 'print_speed' from incompatible pointer type [-Wincompatible-pointer-types]
+  271 |   print_speed(&b);
+      |               ^~
+      |               |
+      |               char (*)[6]
+../src/main.c:195:25: note: expected 'char **' but argument is of type 'char (*)[6]'
+  195 | void print_speed(char **b){
+      |                  ~~~~~~~^
+../src/main.c:273:22: warning: passing argument 1 of 'print_acceleration' from incompatible pointer type [-Wincompatible-pointer-types]
+  273 |   print_acceleration(&b);
+      |                      ^~
+      |                      |
+      |                      char (*)[6]
+../src/main.c:207:32: note: expected 'char **' but argument is of type 'char (*)[6]'
+  207 | void print_acceleration(char **b){
+      |                         ~~~~~~~^
+../src/main.c:275:19: warning: passing argument 1 of 'print_direction' from incompatible pointer type [-Wincompatible-pointer-types]
+  275 |   print_direction(&b);
+      |                   ^~
+      |                   |
+      |                   char (*)[6]
+../src/main.c:220:29: note: expected 'char **' but argument is of type 'char (*)[6]'
+  220 | void print_direction(char **b){
+      |                      ~~~~~~~^
+'Finished building: ../src/main.c'
+' '
+'Building file: ../src/platform.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+'Finished building: ../src/platform.c'
+' '
+'Building file: ../src/queue.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/queue.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -IC:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/queue.d" -MT"src/queue.o" -o "src/queue.o" "../src/queue.c"
+'Finished building: ../src/queue.c'
+' '
+'Building target: quadrature_encoder_ZyboZ7_app.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -LC:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/sw/quadrature_encoder_ZyboZ7_platform/standalone_domain/bsplib/lib -o "quadrature_encoder_ZyboZ7_app.elf"  ./src/main.o ./src/platform.o ./src/queue.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: quadrature_encoder_ZyboZ7_app.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size quadrature_encoder_ZyboZ7_app.elf  |tee "quadrature_encoder_ZyboZ7_app.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  72495	   3388	  23200	  99083	  1830b	quadrature_encoder_ZyboZ7_app.elf
+'Finished building: quadrature_encoder_ZyboZ7_app.elf.size'
+' '
+
+13:13:16 Build Finished (took 3s.798ms)
+

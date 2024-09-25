@@ -1,0 +1,57 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP0.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is ENABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP1.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_GP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_GP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP0 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP1 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP2.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP2 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP3.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP3 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_ACP.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
+                   0 else checking line ......0
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.RX_FIFO_II.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_Zynq/UUT/design_1_i/PmodOLEDrgb_0/inst/axi_quad_spi_0/U0/no_dual_quad_mode/QSPI_NORMAL/qspi_legacy_md_gen/QSPI_CORE_INTERFACE_I/fifo_exists/RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial297_467  Scope: tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.RX_FIFO_II.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: C:/Xilinx/Vivado/2021.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 491
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.TX_FIFO_II.xpm_fifo_instance.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_Zynq/UUT/design_1_i/PmodOLEDrgb_0/inst/axi_quad_spi_0/U0/no_dual_quad_mode/QSPI_NORMAL/qspi_legacy_md_gen/QSPI_CORE_INTERFACE_I/fifo_exists/TX_FIFO_II/xpm_fifo_instance/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial297_467  Scope: tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.TX_FIFO_II.xpm_fifo_instance.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: C:/Xilinx/Vivado/2021.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 491
+ERROR: 130 ns tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP0.master.IF  : XILINX_RESET_PULSE_WIDTH: Holding AXI ARESETN asserted for 16 cycles of the slowest AXI clock is generally a sufficient reset pulse width for Xilinx IP. --UG1037. To downgrade, use <hierarchy_path to VIP>.IF.set_xilinx_reset_check_to_warn(), or filter using clr_xilinx_reset_check().
+[150] : *ZYNQ_VIP_INFO : FPGA Soft Reset called for 0x1
+[150] : *ZYNQ_VIP_INFO : FPGA Soft Reset called for 0x0
+[200] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Read -> 4 bytes
+                 200ID2 in read strb task is e56
+[1550] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200000) with Response 'OKAY'
+[1555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Read -> 4 bytes
+                1555ID2 in read strb task is f48
+[1830] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41210000) with Response 'OKAY'
+[1541743] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Read -> 4 bytes
+             1541743ID2 in read strb task is 4f4
+[1542030] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200000) with Response 'OKAY'
+[1542035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Read -> 4 bytes
+             1542035ID2 in read strb task is 8ee
+[1542310] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41210000) with Response 'OKAY'
+$stop called at time : 1542337 ns : File "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sim_1/new/tb_Zynq.v" Line 76
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks

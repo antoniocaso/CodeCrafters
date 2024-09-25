@@ -1,0 +1,573 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Jun 28 12:41:29 2024
+# Process ID: 19676
+# Current directory: C:/consegna/vivado/quadrature_encoder
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent4648 C:\consegna\vivado\quadrature_encoder\quadrature_encoder.xpr
+# Log file: C:/consegna/vivado/quadrature_encoder/vivado.log
+# Journal file: C:/consegna/vivado/quadrature_encoder\vivado.jou
+# Running On: Antonio, OS: Windows, CPU Frequency: 2496 MHz, CPU Physical cores: 12, Host memory: 16785 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/consegna/vivado/quadrature_encoder/quadrature_encoder.xpr
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.6 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.6/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu105:part0:1.7 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu105/1.7/board.xml as part xcku040-ffva1156-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.4 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.4/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu116:part0:1.5 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu116/1.5/board.xml as part xcku5p-ffvb676-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:kcu1500:part0:1.2 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/kcu1500/1.2/board.xml as part xcku115-flvb2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190:part0:2.2 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/production/2.2/board.xml as part xcvc1902-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vck190_es:part0:1.3 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vck190/es/1.3/board.xml as part xcvc1902-vsva2197-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.6 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.6/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu108:part0:1.7 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu108/1.7/board.xml as part xcvu095-ffva2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu110:part0:1.4 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu110/1.4/board.xml as part xcvu190-flgc2104-2-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.0/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.3 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.3/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu118:part0:2.4 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu118/2.4/board.xml as part xcvu9p-flga2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu128:part0:1.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu128/production/1.0/board.xml as part xcvu37p-fsvh2892-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu129:part0:1.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu129/production/1.0/board.xml as part xcvu29p-fsga2577-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vcu1525:part0:1.3 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vcu1525/1.3/board.xml as part xcvu9p-fsgd2104-2l-e specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180:part0:2.2 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/production/2.2/board.xml as part xcvm1802-vsva2197-2mp-e-s specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vmk180_es:part0:1.3 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vmk180/es/1.3/board.xml as part xcvm1802-vsva2197-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vpk120_es:part0:1.2 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vpk120/es/1.2/board.xml as part xcvp1202-vsva2785-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld_es:part0:1.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/es/1.0/board.xml as part xczu58dr-fsvg1517-2-i-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld_es:part0:1.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/es/1.0/board.xml as part xczu59dr-ffvf1760-2-i-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:1.0 available at C:/Xilinx/Vivado/2021.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/1.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+INFO: [Project 1-313] Project file moved from 'C:/consegna/quadrature_encoder' since last save.
+INFO: [filemgmt 56-1] Board Part Repository Path: Directory not found as 'C:/consegna/Users/Ares-/AppData/Roaming/Xilinx/Vivado/2021.2/xhub/board_store/xilinx_board_store'; using path 'C:/Users/Ares-/AppData/Roaming/Xilinx/Vivado/2021.2/xhub/board_store/xilinx_board_store' instead.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/consegna/vivado/quadrature_encoder/vivado-library-master'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.2/data/ip'.
+open_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:13 . Memory (MB): peak = 1254.840 ; gain = 0.000
+update_compile_order -fileset sources_1
+update_module_reference design_1_quadrature_encoder_0_0
+INFO: [IP_Flow 19-5107] Inferred bus interface 'reset' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'reset'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/consegna/vivado/quadrature_encoder/vivado-library-master'.
+Reading block design file <C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd>...
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:module_ref:quadrature_encoder:1.0 - quadrature_encoder_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_0
+Adding component instance block -- xilinx.com:ip:axi_gpio:2.0 - axi_gpio_1
+Adding component instance block -- xilinx.com:ip:axi_interconnect:2.1 - ps7_0_axi_periph
+Adding component instance block -- xilinx.com:ip:axi_crossbar:2.1 - xbar
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - auto_pc
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - rst_ps7_0_50M
+Adding component instance block -- digilentinc.com:IP:PmodOLEDrgb:1.0 - PmodOLEDrgb_0
+Successfully read diagram <design_1> from block design file <C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd>
+Upgrading 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd'
+INFO: [IP_Flow 19-3420] Updated design_1_quadrature_encoder_0_0 to use current project options
+Wrote  : <C:\consegna\vivado\quadrature_encoder\quadrature_encoder.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+upgrade_ip: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1565.273 ; gain = 310.434
+update_module_reference: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1565.273 ; gain = 310.434
+generate_target Simulation [get_files C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd]
+Wrote  : <C:\consegna\vivado\quadrature_encoder\quadrature_encoder.srcs\sources_1\bd\design_1\design_1.bd> 
+Wrote  : <C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/ui/bd_1f5defd0.ui> 
+VHDL Output written to : c:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/synth/design_1.v
+VHDL Output written to : c:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/sim/design_1.v
+VHDL Output written to : c:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
+INFO: [IP_Flow 19-5611] Unable to find an associated reset port for the interface 'M_AXI_GP0'. A default connection has been created.
+INFO: [BD 41-1029] Generation completed for the IP Integrator block processing_system7_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block quadrature_encoder_0 .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/xbar .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block rst_ps7_0_50M .
+INFO: [BD 41-1029] Generation completed for the IP Integrator block ps7_0_axi_periph/s00_couplers/auto_pc .
+Exporting to file c:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/hw_handoff/design_1.hwh
+Generated Hardware Definition File c:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/synth/design_1.hwdef
+generate_target: Time (s): cpu = 00:00:06 ; elapsed = 00:00:19 . Memory (MB): peak = 1873.445 ; gain = 238.660
+export_ip_user_files -of_objects [get_files C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd] -no_script -sync -force -quiet
+export_simulation -of_objects [get_files C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/bd/design_1/design_1.bd] -directory C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/sim_scripts -ip_user_files_dir C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files -ipstatic_source_dir C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/consegna/vivado/quadrature_encoder/quadrature_encoder.cache/compile_simlib/modelsim} {questa=C:/consegna/vivado/quadrature_encoder/quadrature_encoder.cache/compile_simlib/questa} {riviera=C:/consegna/vivado/quadrature_encoder/quadrature_encoder.cache/compile_simlib/riviera} {activehdl=C:/consegna/vivado/quadrature_encoder/quadrature_encoder.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'tb_Zynq'
+WARNING: [Vivado 12-12986] Compiled library path does not exist: ''
+INFO: [Vivado 12-5698] Checking validity of IPs in the design for the 'XSim' simulator...
+INFO: [Runs 36-567] Checking/generating simulation output products for IPs/BDs (if any)...
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim'
+INFO: [Vivado 12-4795] Using compiled simulation libraries for IPs
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from 'C:/Xilinx/Vivado/2021.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File 'C:/Xilinx/Vivado/2021.2/data/xsim/xsim.ini' copied to run dir:'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_Zynq' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_0_mixed.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_1_wb.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_2_nm.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_4_mx.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_0_mixed.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_1_wb.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_2_nm.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_4_mx.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_3_sp.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_3_sp.mif'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_0_mixed.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_1_wb.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_2_nm.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_4_mx.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_0_mixed.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_1_wb.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_2_nm.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_4_mx.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_2_memory_3_sp.mem'
+INFO: [SIM-utils-43] Exported 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/mode_1_memory_3_sp.mem'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L uvm -L axi_vip_v1_1_11 -L processing_system7_vip_v1_0_13 -L xilinx_vip -prj tb_Zynq_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sources_1/new/quadrature_encoder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module quadrature_encoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_processing_system7_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_quadrature_encoder_0_0/sim/design_1_quadrature_encoder_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_quadrature_encoder_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_xbar_0/sim/design_1_xbar_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_xbar_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/ip/design_1_PmodOLEDrgb_0_1/ip/PmodOLEDrgb_pmod_bridge_0_0/src/pmod_concat.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pmod_concat
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_PmodOLEDrgb_0_1/ip/PmodOLEDrgb_pmod_bridge_0_0/sim/PmodOLEDrgb_pmod_bridge_0_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PmodOLEDrgb_pmod_bridge_0_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/ipshared/35e8/hdl/PmodOLEDrgb_v1_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PmodOLEDrgb_v1_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_PmodOLEDrgb_0_1/sim/design_1_PmodOLEDrgb_0_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_PmodOLEDrgb_0_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_auto_pc_0/sim/design_1_auto_pc_0.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_auto_pc_0
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/sim/design_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1
+INFO: [VRFC 10-311] analyzing module design_1_ps7_0_axi_periph_0
+INFO: [VRFC 10-311] analyzing module m00_couplers_imp_15SPJYW
+INFO: [VRFC 10-311] analyzing module m01_couplers_imp_XU9C55
+INFO: [VRFC 10-311] analyzing module m02_couplers_imp_14WQB4R
+INFO: [VRFC 10-311] analyzing module m03_couplers_imp_YFYJ3U
+INFO: [VRFC 10-311] analyzing module s00_couplers_imp_UYSKKA
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sim_1/new/tb_Zynq.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_Zynq
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+"xvhdl --incr --relax -prj tb_Zynq_vhdl.prj"
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_axi_gpio_0_0/sim/design_1_axi_gpio_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'design_1_axi_gpio_0_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_axi_gpio_0_1/sim/design_1_axi_gpio_0_1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'design_1_axi_gpio_0_1'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_rst_ps7_0_50M_0/sim/design_1_rst_ps7_0_50M_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'design_1_rst_ps7_0_50M_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_PmodOLEDrgb_0_1/ip/PmodOLEDrgb_axi_quad_spi_0_0/sim/PmodOLEDrgb_axi_quad_spi_0_0.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'PmodOLEDrgb_axi_quad_spi_0_0'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_PmodOLEDrgb_0_1/ip/PmodOLEDrgb_axi_gpio_0_1/sim/PmodOLEDrgb_axi_gpio_0_1.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'PmodOLEDrgb_axi_gpio_0_1'
+INFO: [USF-XSim-69] 'compile' step finished in '4' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim'
+"xelab --incr --debug typical --relax --mt 2 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_11 -L processing_system7_vip_v1_0_13 -L axi_lite_ipif_v3_0_4 -L lib_cdc_v1_0_2 -L interrupt_control_v3_1_4 -L axi_gpio_v2_0_27 -L generic_baseblocks_v2_1_0 -L axi_register_slice_v2_1_25 -L fifo_generator_v13_2_6 -L axi_data_fifo_v2_1_24 -L axi_crossbar_v2_1_26 -L proc_sys_reset_v5_0_13 -L dist_mem_gen_v8_0_13 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L lib_fifo_v1_0_15 -L axi_quad_spi_v3_2_24 -L axi_protocol_converter_v2_1_25 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Zynq_behav xil_defaultlib.tb_Zynq xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator v2021.2
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2021.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_11 -L processing_system7_vip_v1_0_13 -L axi_lite_ipif_v3_0_4 -L lib_cdc_v1_0_2 -L interrupt_control_v3_1_4 -L axi_gpio_v2_0_27 -L generic_baseblocks_v2_1_0 -L axi_register_slice_v2_1_25 -L fifo_generator_v13_2_6 -L axi_data_fifo_v2_1_24 -L axi_crossbar_v2_1_26 -L proc_sys_reset_v5_0_13 -L dist_mem_gen_v8_0_13 -L lib_pkg_v1_0_2 -L lib_srl_fifo_v1_0_2 -L lib_fifo_v1_0_15 -L axi_quad_spi_v3_2_24 -L axi_protocol_converter_v2_1_25 -L uvm -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Zynq_behav xil_defaultlib.tb_Zynq xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 16 for port 'IRQ_F2P' [C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v:575]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_gp.v:208]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5546]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:5564]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 64 for port 'WR_DATA_STRB' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_gp.v:292]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:80]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:89]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_bid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10256]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 6 for port 'm_axi_rid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10274]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10275]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:165]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:174]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:251]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:260]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'WR_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:337]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 9 for port 'RD_BYTES' [/scratch/proj/xbuilds/SWIP/2021.2_1021_0703/infra/XSIM/lin/.cxl.ip/incl/processing_system7_vip_v1_0_13_axi_hp.v:346]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_bid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7157]
+WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 3 for port 'm_axi_rid' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7175]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 64 for port 'm_axi_rdata' [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7176]
+WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/sim/design_1.v:601]
+WARNING: [VRFC 10-5021] port 'ip2intc_irpt' is not connected on this instance [C:/consegna/vivado/quadrature_encoder/quadrature_encoder.gen/sources_1/bd/design_1/ipshared/35e8/hdl/PmodOLEDrgb_v1_0.v:259]
+WARNING: [VRFC 10-5021] port 'ENET0_GMII_RXD' is not connected on this instance [C:/consegna/vivado/quadrature_encoder/quadrature_encoder.ip_user_files/bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v:187]
+WARNING: [VRFC 10-3027] 'ocm_wr_strb_port0' was previously declared with a different range [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:3809]
+WARNING: [VRFC 10-5021] port 'aclk2x' is not connected on this instance [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/axi_protocol_converter_v2_1/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4376]
+WARNING: [VRFC 10-5021] port 'aclk2x' is not connected on this instance [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/axi_protocol_converter_v2_1/hdl/axi_protocol_converter_v2_1_vl_rfs.v:4631]
+WARNING: [VRFC 10-3705] select index 64 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6134]
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10898]
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7772]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7985]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8124]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8221]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8240]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8381]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8386]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8391]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling package axi_lite_ipif_v3_0_4.ipif_pkg
+Compiling package unisim.vcomponents
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package ieee.std_logic_signed
+Compiling package xpm.vcomponents
+Compiling package lib_pkg_v1_0_2.lib_pkg
+Compiling package xilinx_vip.axi_vip_pkg
+Compiling package xilinx_vip.xil_common_vip_pkg
+Compiling package std.std
+Compiling module xil_defaultlib.pmod_concat_default
+Compiling module xil_defaultlib.PmodOLEDrgb_pmod_bridge_0_0
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=2,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.address_decoder [\address_decoder(c_bus_awidth=9,...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.slave_attachment [\slave_attachment(c_ard_addr_ran...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.axi_lite_ipif [\axi_lite_ipif(c_s_axi_addr_widt...]
+Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
+Compiling architecture fdr_v of entity unisim.FDR [fdr_default]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_single_bit=0,c_vecto...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.GPIO_Core [\GPIO_Core(c_aw=9,c_gpio_width=4...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.axi_gpio [\axi_gpio(c_family="zynq",c_gpio...]
+Compiling architecture pmodoledrgb_axi_gpio_0_1_arch of entity xil_defaultlib.PmodOLEDrgb_axi_gpio_0_1 [pmodoledrgb_axi_gpio_0_1_default]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=1,c_aw=7,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=4,c_aw=4,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=7,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=3,c_aw=3,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.pselect_f [\pselect_f(c_ab=2,c_aw=7,c_bar="...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.address_decoder [\address_decoder(c_bus_awidth=7,...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.slave_attachment [\slave_attachment(c_ard_addr_ran...]
+Compiling architecture imp of entity axi_lite_ipif_v3_0_4.axi_lite_ipif [\axi_lite_ipif(c_s_axi_addr_widt...]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=1,c_mtb...]
+Compiling architecture fdre_v of entity unisim.FDRE [\FDRE(init='1')\]
+Compiling architecture fdr_v of entity unisim.FDR [\FDR(init='1')\]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=1,c_mtb...]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=1,c_mtb...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.cross_clk_sync_fifo_1 [\cross_clk_sync_fifo_1(c_family=...]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=1)\]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.counter_f [\counter_f(c_num_bits=4)(1,8)\]
+Compiling module xpm.xpm_fifo_base(COMMON_CLOCK=0,FIF...
+Compiling module xpm.xpm_fifo_async(FIFO_MEMORY_TYPE=...
+Compiling architecture implementation of entity lib_fifo_v1_0_15.async_fifo_fg [\async_fifo_fg(c_allow_2n_depth=...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_fifo_ifmodule [\qspi_fifo_ifmodule(c_num_transf...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_occupancy_reg [\qspi_occupancy_reg(c_occupancy_...]
+Compiling architecture fd_v of entity unisim.FD [\FD(init='1')\]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_mode_0_module [\qspi_mode_0_module(c_sck_ratio=...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_status_slave_sel_reg [\qspi_status_slave_sel_reg(c_spi...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.reset_sync_module [reset_sync_module_default]
+Compiling module xpm.xpm_cdc_sync_rst(DEST_SYNC_FF=2,...
+Compiling module xpm.xpm_fifo_rst(COMMON_CLOCK=0)
+Compiling module xpm.xpm_fifo_reg_bit
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=5...
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=1)
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=2)
+Compiling module xpm.xpm_counter_updn(RESET_VALUE=3)
+Compiling module xpm.xpm_memory_base(MEMORY_TYPE=1,ME...
+Compiling module xpm.xpm_cdc_gray(DEST_SYNC_FF=2,INIT...
+Compiling module xpm.xpm_fifo_reg_vec
+Compiling module xpm.xpm_cdc_gray(INIT_SYNC_FF=1,WIDT...
+Compiling module xpm.xpm_fifo_reg_vec(REG_WIDTH=5)
+Compiling module xpm.xpm_cdc_gray(DEST_SYNC_FF=2,INIT...
+Compiling module xpm.xpm_counter_updn(COUNTER_WIDTH=2...
+Compiling module xpm.xpm_fifo_base(COMMON_CLOCK=0,FIF...
+Compiling module xpm.xpm_fifo_async(FIFO_MEMORY_TYPE=...
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_cntrl_reg [\qspi_cntrl_reg(c_s_axi_data_wid...]
+Compiling architecture lut4_v of entity unisim.LUT4 [\LUT4(init="1111111111001010")(0...]
+Compiling architecture fdrse_v of entity unisim.FDRSE [fdrse_default]
+Compiling architecture implementation of entity axi_quad_spi_v3_2_24.soft_reset [\soft_reset(c_reset_width=16)\]
+Compiling architecture implementation of entity interrupt_control_v3_1_4.interrupt_control [\interrupt_control(c_num_ce=16,c...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.qspi_core_interface [\qspi_core_interface(c_family="z...]
+Compiling architecture fd_v of entity unisim.FD [fd_default]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.axi_quad_spi_top [\axi_quad_spi_top(async_clk=1,c_...]
+Compiling architecture imp of entity axi_quad_spi_v3_2_24.axi_quad_spi [\axi_quad_spi(async_clk=1,c_fami...]
+Compiling architecture pmodoledrgb_axi_quad_spi_0_0_arch of entity xil_defaultlib.PmodOLEDrgb_axi_quad_spi_0_0 [pmodoledrgb_axi_quad_spi_0_0_def...]
+Compiling module xil_defaultlib.PmodOLEDrgb_v1_0
+Compiling module xil_defaultlib.design_1_PmodOLEDrgb_0_1
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_single_bit=0,c_mtbf_...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.GPIO_Core [\GPIO_Core(c_aw=9,c_all_inputs=1...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.axi_gpio [\axi_gpio(c_family="zynq",c_all_...]
+Compiling architecture design_1_axi_gpio_0_0_arch of entity xil_defaultlib.design_1_axi_gpio_0_0 [design_1_axi_gpio_0_0_default]
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_single_bit=0,c_vecto...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.GPIO_Core [\GPIO_Core(c_aw=9,c_gpio_width=1...]
+Compiling architecture imp of entity axi_gpio_v2_0_27.axi_gpio [\axi_gpio(c_family="zynq",c_gpio...]
+Compiling architecture design_1_axi_gpio_0_1_arch of entity xil_defaultlib.design_1_axi_gpio_0_1 [design_1_axi_gpio_0_1_default]
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_g...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_g...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_f...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_s...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_i...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_s...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_d...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_o...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_o...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_r...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_r...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_11.axi_vip_v1_1_11_top(C_AXI_PROTOC...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module xilinx_vip.axi_vip_axi4pc(WDATA_WIDTH=32,RD...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_11.axi_vip_v1_1_11_top(C_AXI_PROTOC...
+WARNING: [VRFC 10-3705] select index 64 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:6134]
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_11.axi_vip_v1_1_11_top(C_AXI_PROTOC...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_i...
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:10898]
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module xilinx_vip.axi_vip_axi4pc(PROTOCOL=1,RID_WI...
+Compiling module xilinx_vip.cb
+Compiling module xilinx_vip.axi_vip_if(C_AXI_PROTOCOL=1,C_AX...
+Compiling module axi_vip_v1_1_11.axi_vip_v1_1_11_top(C_AXI_PROTOC...
+WARNING: [VRFC 10-3705] select index 128 into 'wrp_strb' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7772]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:7985]
+WARNING: [VRFC 10-3705] select index 4 into 'ar_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8124]
+WARNING: [VRFC 10-3705] select index 4 into 'wr_rresp_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8221]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_wr_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8240]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8381]
+WARNING: [VRFC 10-3705] select index 4 into 'rresp_time_cnt' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8386]
+WARNING: [VRFC 10-3705] select index 4 into 'rd_fifo_rd_ptr' is out of bounds [/wrk/ci/prod/2021.2/sw/continuous/8687/packages/customer/vivado/data/ip/xilinx/processing_system7_vip_v1_0/hdl/processing_system7_vip_v1_0_vl_rfs.sv:8391]
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13_a...
+Compiling module processing_system7_vip_v1_0_13.processing_system7_vip_v1_0_13(C...
+Compiling module xil_defaultlib.design_1_processing_system7_0_0
+Compiling module xil_defaultlib.m00_couplers_imp_15SPJYW
+Compiling module xil_defaultlib.m01_couplers_imp_XU9C55
+Compiling module xil_defaultlib.m02_couplers_imp_14WQB4R
+Compiling module xil_defaultlib.m03_couplers_imp_YFYJ3U
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_axi2ve...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_vector...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axi_r...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_axi2ve...
+Compiling module axi_infrastructure_v1_1_0.axi_infrastructure_v1_1_0_vector...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axi_r...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_b...
+Compiling module axi_protocol_converter_v2_1_25.axi_protocol_converter_v2_1_25_a...
+Compiling module xil_defaultlib.design_1_auto_pc_0
+Compiling module xil_defaultlib.s00_couplers_imp_UYSKKA
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_addr_arbite...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_carry_...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_compar...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_addr_decode...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_splitter(C_...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_splitter
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module axi_register_slice_v2_1_25.axi_register_slice_v2_1_25_axic_...
+Compiling module generic_baseblocks_v2_1_0.generic_baseblocks_v2_1_0_mux_en...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_decerr_slav...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_crossbar_sa...
+Compiling module axi_crossbar_v2_1_26.axi_crossbar_v2_1_26_axi_crossba...
+Compiling module xil_defaultlib.design_1_xbar_0
+Compiling module xil_defaultlib.design_1_ps7_0_axi_periph_0
+Compiling module xil_defaultlib.quadrature_encoder
+Compiling module xil_defaultlib.design_1_quadrature_encoder_0_0
+Compiling architecture implementation of entity lib_cdc_v1_0_2.cdc_sync [\cdc_sync(c_vector_width=2,c_mtb...]
+Compiling architecture srl16e_v of entity unisim.SRL16E [\SRL16E(init="1111111111111111")...]
+Compiling architecture srl16_v of entity unisim.SRL16 [\SRL16(init="1111111111111111")(...]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.lpf [\lpf(c_ext_rst_width=4,c_aux_rst...]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.upcnt_n [\upcnt_n(c_size=6)\]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.sequence_psr [sequence_psr_default]
+Compiling architecture imp of entity proc_sys_reset_v5_0_13.proc_sys_reset [\proc_sys_reset(c_family="zynq",...]
+Compiling architecture design_1_rst_ps7_0_50m_0_arch of entity xil_defaultlib.design_1_rst_ps7_0_50M_0 [design_1_rst_ps7_0_50m_0_default]
+Compiling module xil_defaultlib.design_1
+Compiling module unisims_ver.IOBUF
+Compiling module xil_defaultlib.design_1_wrapper
+Compiling module xil_defaultlib.tb_Zynq
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_Zynq_behav
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:44 . Memory (MB): peak = 1881.551 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '44' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/consegna/vivado/quadrature_encoder/quadrature_encoder.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_Zynq_behav -key {Behavioral:sim_1:Functional:tb_Zynq} -tclbatch {tb_Zynq.tcl} -protoinst "protoinst_files/design_1.protoinst" -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+INFO: [Wavedata 42-565] Reading protoinst file protoinst_files/design_1.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//PmodOLEDrgb_0/AXI_LITE_GPIO
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//PmodOLEDrgb_0/AXI_LITE_SPI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//axi_gpio_0/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//axi_gpio_1/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//processing_system7_0/M_AXI_GP0
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/M03_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/S00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m01_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m01_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m02_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m02_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m03_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/m03_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/s00_couplers/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/s00_couplers/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/s00_couplers/auto_pc/M_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/s00_couplers/auto_pc/S_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/xbar/M00_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/xbar/M01_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/xbar/M02_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/xbar/M03_AXI
+INFO: [Wavedata 42-564]   Found protocol instance at /tb_Zynq/UUT/design_1_i//ps7_0_axi_periph/xbar/S00_AXI
+Time resolution is 1 ps
+source tb_Zynq.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP0.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is ENABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP1.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_GP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_GP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP0 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP1 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP2.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP2 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_HP3.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP3 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: tb_Zynq.UUT.design_1_i.processing_system7_0.inst.S_AXI_ACP.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
+                   0 else checking line ......0
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.RX_FIFO_II.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_Zynq/UUT/design_1_i/PmodOLEDrgb_0/inst/axi_quad_spi_0/U0/no_dual_quad_mode/QSPI_NORMAL/qspi_legacy_md_gen/QSPI_CORE_INTERFACE_I/fifo_exists/RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial297_467  Scope: tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.RX_FIFO_II.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: C:/Xilinx/Vivado/2021.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 491
+Info: [XPM_MEMORY 20-1] MEMORY_PRIMITIVE (0) instructs Vivado Synthesis to choose the memory primitive type. Depending on their values, other XPM_MEMORY parameters may preclude the choice of certain memory primitive types. Review XPM_MEMORY documentation and parameter values to understand any limitations, or set MEMORY_PRIMITIVE to a different value. tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.TX_FIFO_II.xpm_fifo_instance.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc
+Time: 1 ps  Iteration: 0  Process: /tb_Zynq/UUT/design_1_i/PmodOLEDrgb_0/inst/axi_quad_spi_0/U0/no_dual_quad_mode/QSPI_NORMAL/qspi_legacy_md_gen/QSPI_CORE_INTERFACE_I/fifo_exists/TX_FIFO_II/xpm_fifo_instance/xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_sdpram.xpm_memory_base_inst/Initial297_467  Scope: tb_Zynq.UUT.design_1_i.PmodOLEDrgb_0.inst.axi_quad_spi_0.U0.no_dual_quad_mode.QSPI_NORMAL.qspi_legacy_md_gen.QSPI_CORE_INTERFACE_I.fifo_exists.TX_FIFO_II.xpm_fifo_instance.xpm_fifo_async_inst.\gnuram_async_fifo.xpm_fifo_base_inst .\gen_sdpram.xpm_memory_base_inst .config_drc  File: C:/Xilinx/Vivado/2021.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 491
+ERROR: 130 ns tb_Zynq.UUT.design_1_i.processing_system7_0.inst.M_AXI_GP0.master.IF  : XILINX_RESET_PULSE_WIDTH: Holding AXI ARESETN asserted for 16 cycles of the slowest AXI clock is generally a sufficient reset pulse width for Xilinx IP. --UG1037. To downgrade, use <hierarchy_path to VIP>.IF.set_xilinx_reset_check_to_warn(), or filter using clr_xilinx_reset_check().
+[150] : *ZYNQ_VIP_INFO : FPGA Soft Reset called for 0x1
+[150] : *ZYNQ_VIP_INFO : FPGA Soft Reset called for 0x0
+[200] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Read -> 4 bytes
+                 200ID2 in read strb task is e56
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_Zynq_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:55 . Memory (MB): peak = 1925.457 ; gain = 43.906
+run -all
+[1550] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200000) with Response 'OKAY'
+[1555] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Read -> 4 bytes
+                1555ID2 in read strb task is f48
+[1830] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41210000) with Response 'OKAY'
+[1541743] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41200000) -> AXI Read -> 4 bytes
+             1541743ID2 in read strb task is 4f4
+[1542030] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41200000) with Response 'OKAY'
+[1542035] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Starting Address(0x41210000) -> AXI Read -> 4 bytes
+             1542035ID2 in read strb task is 8ee
+[1542310] : M_AXI_GP0 : *ZYNQ_VIP_INFO : Done AXI Read for Starting Address(0x41210000) with Response 'OKAY'
+$stop called at time : 1542337 ns : File "C:/consegna/vivado/quadrature_encoder/quadrature_encoder.srcs/sim_1/new/tb_Zynq.v" Line 76
+run: Time (s): cpu = 00:00:02 ; elapsed = 00:00:29 . Memory (MB): peak = 1947.258 ; gain = 1.145
+close_sim
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+INFO: xsimkernel Simulation Memory Usage: 72772 KB (Peak: 72772 KB), Simulation CPU Usage: 11217 ms
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Jun 28 12:46:32 2024...

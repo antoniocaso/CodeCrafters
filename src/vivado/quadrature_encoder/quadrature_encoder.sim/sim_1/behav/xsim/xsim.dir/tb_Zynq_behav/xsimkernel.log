@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_Zynq_behav/xsimk.exe -simmode gui -wdb tb_Zynq_behav.wdb -simrunnum 0 -socket 50533
+Design successfully loaded
+Design Loading Memory Usage: 24236 KB (Peak: 24236 KB)
+Design Loading CPU Usage: 30 ms
+Simulation completed
+Simulation Memory Usage: 72468 KB (Peak: 72468 KB)
+Simulation CPU Usage: 9874 ms

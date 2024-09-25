@@ -1,0 +1,107 @@
+13:10:02 INFO  : Launching XSCT server: xsct.bat -n  -interactive C:\consegna\vitis\quadrature_encoder\temp_xsdb_launch_script.tcl
+13:10:02 INFO  : Platform repository initialization has completed.
+13:10:02 INFO  : Registering command handlers for Vitis TCF services
+13:10:04 INFO  : XSCT server has started successfully.
+13:10:04 INFO  : Successfully done setting XSCT server connection channel  
+13:10:04 INFO  : plnx-install-location is set to ''
+13:10:04 INFO  : Successfully done setting workspace for the tool. 
+13:10:04 INFO  : Successfully done query RDI_DATADIR 
+13:10:36 INFO  : Result from executing command 'getProjects': quadrature_encoder_ZyboZ7_platform
+13:10:36 INFO  : Result from executing command 'getPlatforms': 
+13:13:12 INFO  : Result from executing command 'getProjects': quadrature_encoder_ZyboZ7_platform
+13:13:12 INFO  : Result from executing command 'getPlatforms': quadrature_encoder_ZyboZ7_platform|C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/quadrature_encoder_ZyboZ7_platform.xpfm
+13:13:12 INFO  : Checking for BSP changes to sync application flags for project 'quadrature_encoder_ZyboZ7_app'...
+13:14:29 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:14:29 WARN  : IDE version '2021.2.0' doesn't match hw_server version '2020.3'. Some debug features may not work.
+13:14:32 INFO  : Jtag cable 'Digilent Zybo Z7 210351B48295A' is selected.
+13:14:32 INFO  : 'jtag frequency' command is executed.
+13:14:32 INFO  : Context for 'APU' is selected.
+13:14:32 INFO  : System reset is completed.
+13:14:35 INFO  : 'after 3000' command is executed.
+13:14:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B48295A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B48295A-23727093-0"}' command is executed.
+13:14:38 INFO  : Device configured successfully with "C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/bitstream/design_1_wrapper.bit"
+13:14:38 INFO  : Context for 'APU' is selected.
+13:14:38 INFO  : Hardware design and registers information is loaded from 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/hw/design_1_wrapper.xsa'.
+13:14:38 INFO  : 'configparams force-mem-access 1' command is executed.
+13:14:38 INFO  : Context for 'APU' is selected.
+13:14:38 INFO  : Sourcing of 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/psinit/ps7_init.tcl' is done.
+13:14:39 INFO  : 'ps7_init' command is executed.
+13:14:39 INFO  : 'ps7_post_config' command is executed.
+13:14:39 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:14:39 INFO  : The application 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/Debug/quadrature_encoder_ZyboZ7_app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:14:39 INFO  : 'configparams force-mem-access 0' command is executed.
+13:14:39 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B48295A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B48295A-23727093-0"}
+fpga -file C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/Debug/quadrature_encoder_ZyboZ7_app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:14:39 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:14:40 INFO  : 'con' command is executed.
+13:14:40 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:14:40 INFO  : Launch script is exported to file 'C:\consegna\vitis\quadrature_encoder\quadrature_encoder_ZyboZ7_app_system\_ide\scripts\systemdebugger_quadrature_encoder_zyboz7_app_system_standalone.tcl'
+13:15:07 INFO  : Disconnected from the channel tcfchan#2.
+13:15:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:15:07 WARN  : IDE version '2021.2.0' doesn't match hw_server version '2020.3'. Some debug features may not work.
+13:15:10 INFO  : Jtag cable 'Digilent Zybo Z7 210351B48295A' is selected.
+13:15:10 INFO  : 'jtag frequency' command is executed.
+13:15:10 INFO  : Context for 'APU' is selected.
+13:15:10 INFO  : System reset is completed.
+13:15:13 INFO  : 'after 3000' command is executed.
+13:15:13 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B48295A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B48295A-23727093-0"}' command is executed.
+13:15:15 INFO  : Device configured successfully with "C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/bitstream/design_1_wrapper.bit"
+13:15:15 INFO  : Context for 'APU' is selected.
+13:15:15 INFO  : Hardware design and registers information is loaded from 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/hw/design_1_wrapper.xsa'.
+13:15:15 INFO  : 'configparams force-mem-access 1' command is executed.
+13:15:15 INFO  : Context for 'APU' is selected.
+13:15:15 INFO  : Sourcing of 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/psinit/ps7_init.tcl' is done.
+13:15:16 INFO  : 'ps7_init' command is executed.
+13:15:16 INFO  : 'ps7_post_config' command is executed.
+13:15:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:15:16 INFO  : The application 'C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/Debug/quadrature_encoder_ZyboZ7_app.elf' is downloaded to processor 'ps7_cortexa9_0'.
+13:15:16 INFO  : 'configparams force-mem-access 0' command is executed.
+13:15:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~"APU*"}
+rst -system
+after 3000
+targets -set -filter {jtag_cable_name =~ "Digilent Zybo Z7 210351B48295A" && level==0 && jtag_device_ctx=="jsn-Zybo Z7-210351B48295A-23727093-0"}
+fpga -file C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/bitstream/design_1_wrapper.bit
+targets -set -nocase -filter {name =~"APU*"}
+loadhw -hw C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_platform/export/quadrature_encoder_ZyboZ7_platform/hw/design_1_wrapper.xsa -mem-ranges [list {0x40000000 0xbfffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*"}
+source C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/_ide/psinit/ps7_init.tcl
+ps7_init
+ps7_post_config
+targets -set -nocase -filter {name =~ "*A9*#0"}
+dow C:/consegna/vitis/quadrature_encoder/quadrature_encoder_ZyboZ7_app/Debug/quadrature_encoder_ZyboZ7_app.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:15:16 INFO  : Context for processor 'ps7_cortexa9_0' is selected.
+13:15:16 INFO  : 'con' command is executed.
+13:15:16 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*A9*#0"}
+con
+----------------End of Script----------------
+
+13:15:16 INFO  : Launch script is exported to file 'C:\consegna\vitis\quadrature_encoder\quadrature_encoder_ZyboZ7_app_system\_ide\scripts\systemdebugger_quadrature_encoder_zyboz7_app_system_standalone.tcl'
+13:17:06 INFO  : Disconnected from the channel tcfchan#3.

@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_quadrature_encoder_behav/xsimk.exe -simmode gui -wdb tb_quadrature_encoder_behav.wdb -simrunnum 0 -socket 50521
+Design successfully loaded
+Design Loading Memory Usage: 11108 KB (Peak: 11108 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 19760 KB (Peak: 19760 KB)
+Simulation CPU Usage: 3656 ms

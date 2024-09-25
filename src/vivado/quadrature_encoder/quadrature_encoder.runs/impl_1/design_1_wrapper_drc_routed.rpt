@@ -1,0 +1,46 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.2 (win64) Build 3367213 Tue Oct 19 02:48:09 MDT 2021
+| Date         : Fri Jun 28 13:05:57 2024
+| Host         : Antonio running 64-bit major release  (build 9200)
+| Command      : report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
+| Design       : design_1_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 2
++--------+----------+--------------------------+------------+
+| Rule   | Severity | Description              | Violations |
++--------+----------+--------------------------+------------+
+| BUFC-1 | Warning  | Input Buffer Connections | 2          |
++--------+----------+--------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+BUFC-1#1 Warning
+Input Buffer Connections  
+Input buffer ja_pin1_iobuf/IBUF (in ja_pin1_iobuf macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+BUFC-1#2 Warning
+Input Buffer Connections  
+Input buffer ja_pin4_iobuf/IBUF (in ja_pin4_iobuf macro) has no loads. It is recommended to have an input buffer drive an internal load.
+Related violations: <none>
+
+

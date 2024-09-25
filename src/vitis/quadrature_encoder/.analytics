@@ -1,0 +1,7 @@
+timestamp=[2024-06-28 13:10:01], mode=WORKBENCH_START, duration=0:00:05.127, duration_ms=5127, data={}
+timestamp=[2024-06-28 13:10:01], mode=WORKBENCH_UI_INIT, duration=0:00:00.455, duration_ms=455, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2024-06-28 13:10:02], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.065, duration_ms=65, data={}
+timestamp=[2024-06-28 13:10:38], mode=PLATFORM_CREATION, duration=0:00:15.251, duration_ms=15251, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2024-06-28 13:11:27], mode=APP_CREATION, duration=0:00:06.045, duration_ms=6045, data={name=quadrature_encoder_ZyboZ7_app, project_type=sdk, os=standalone, processor=cortex-a9, runtime=C/C++, platform=quadrature_encoder_ZyboZ7_platform, application_type=application}
+timestamp=[2024-06-28 13:13:12], mode=PLATFORM_GENERATION, duration=0:00:32.464, duration_ms=32464, data={name=quadrature_encoder_ZyboZ7_platform}
+timestamp=[2024-06-28 13:13:16], mode=BUILD, duration=0:00:03.832, duration_ms=3832, data={name=quadrature_encoder_ZyboZ7_app, configuration=Debug, clean_build=false}
